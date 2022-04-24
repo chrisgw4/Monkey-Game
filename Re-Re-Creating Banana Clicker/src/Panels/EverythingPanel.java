@@ -287,18 +287,17 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		if (delta >= 1) {
             //tick();
 			repaint();
-			//frames++;
+			frames++;
             delta = 0D;
         }
-        //if(running)
-         //   render();
         
         
+        // Small fps counter
         if(timers >= 1000000000L) {
         	//System.out.println(System.currentTimeMillis() - timers);
             
             //System.out.println("FPS: " + frames);
-            //frames = 0;
+            frames = 0;
             timers = 0;
         }
 		
