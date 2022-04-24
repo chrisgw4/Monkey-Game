@@ -11,12 +11,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import CountLargeNumbers.NumToWords;
+import Panels.EverythingPanel;
 import Panels.PurchaseablePanel;
 import input.MouseLocation;
 import main.Main;
@@ -88,13 +90,16 @@ public class Purchaseable extends GlobalPosition {
 	
 	private Image flip_img;
 	
-
+	private ArrayList<Image> flipList = new ArrayList<Image>();
+	
+	private static int FPS = EverythingPanel.getFPSTarget();
 	//private int myY;
 	
 	//Purchaseable m = new Purchaseable(width*.3, height*.3, "Monkey", 10.0, 172*width/1920, 46*height/1080);
 	public Purchaseable(double x, double y, String name, double cost, int width, int height) {
 		super(x, y);
 		//myY = (int) y;
+		
 		
 		screenWidth = width;
 		screenHeight = height;
@@ -111,7 +116,7 @@ public class Purchaseable extends GlobalPosition {
 		//myImage = "/Images/Upgrade_Boxes/" + myName + ".png";
 		//myFlipImage = "/Images/Upgrade_Boxes/Board_Flip/flip_" + myFrame + ".png";
 		myFrame = 4;
-		myDelay = 5;
+		myDelay = 5*(FPS/60);
 		myDelayCount = 0;
 		showBoard = false;
 		
@@ -123,11 +128,25 @@ public class Purchaseable extends GlobalPosition {
 		
 		try {
 			img = ImageIO.read(new File("Images/Upgrade_Boxes/" + myName + ".png"));
-			flip_img = ImageIO.read(new File("Images/Upgrade_Boxes/Board_Flip/flip_0.png"));
+			//flip_img = ImageIO.read(new File("Images/Upgrade_Boxes/Board_Flip/flip_0.png"));
+			//flipList.add(flip_img);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		for(int i = 0; i < 4; i++)
+		{
+			try {
+				flip_img = ImageIO.read(new File("Images/Upgrade_Boxes/Board_Flip/flip_"+ i +".png"));
+				flipList.add(flip_img);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
 	}
 
 	
@@ -200,7 +219,7 @@ public class Purchaseable extends GlobalPosition {
 //			if (isFlipped)
 			g2d.drawImage(img, getX(), getY(), myLength, myHeight, null);
 		}
-		if (showStats && myFrame <= 3)
+		else if (showStats && myFrame <= 3)
 		{
 			g2d.drawImage(getFlipImage(), getX(), getY(), myLength, myHeight, null);
 		}
@@ -287,12 +306,12 @@ public class Purchaseable extends GlobalPosition {
 		if (myFrame <= 3)
 		{
 //			myFlipImage = "/Images/Upgrade_Boxes/Board_Flip/flip_" + myFrame + ".png";
-			try {
-				flip_img = ImageIO.read(new File("Images/Upgrade_Boxes/Board_Flip/flip_" + myFrame + ".png"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			try {
+//				flip_img = ImageIO.read(new File("Images/Upgrade_Boxes/Board_Flip/flip_" + myFrame + ".png"));
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			myDelayCount++;
 			//System.out.println(myFrame);
 			if (myDelayCount >= myDelay)
@@ -301,13 +320,16 @@ public class Purchaseable extends GlobalPosition {
 				//System.out.println(myFrame);
 				myDelayCount = 0;
 			}
+			if(myFrame > 0)
+				return flipList.get(myFrame-1);
+			
 				
 		}
 		else if (showStats)
 			myFrame = 0;
 		//ImageIcon i = new ImageIcon(getClass().getResource(myFlipImage));
 		
-		return flip_img;
+		return flipList.get(0);
 		
 		//return i.getImage();
 	}

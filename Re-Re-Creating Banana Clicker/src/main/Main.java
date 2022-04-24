@@ -50,11 +50,16 @@ public class Main {
 		
 		//frame.add(new paenltest());
 		//frame.add(new EverythingPanel(width,height));
-		frame.setContentPane(new EverythingPanel(width,height, frame));
+		EverythingPanel p = new EverythingPanel(width,height, frame);
+		frame.setContentPane(p);
 		
 		frame.setVisible(true);
 		
 		frame.pack();
+		while(true)
+		{
+			p.actionPerformed(null);
+		}
 		
 	}
 	

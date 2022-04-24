@@ -171,9 +171,9 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		//gamelooptimer = new Timer(getTimer(), this);
 		
 		
-		gamelooptimer = new Timer(timer, this);
+		//gamelooptimer = new Timer(timer, this);
 		//gamelooptimer.setInitialDelay(15);
-		gamelooptimer.start();
+		//gamelooptimer.start();
 		
 		this.addMouseMotionListener(ml);
 		
@@ -197,8 +197,8 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		
 	}
 	
-	long timeStep;
-	long prevTime = System.currentTimeMillis();
+	private long timeStep;
+	private long prevTime = System.currentTimeMillis();
 	
 	public void paint(Graphics g) {
 		
@@ -209,6 +209,8 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		spp.updateFile();
 		
 		mp.update();
+		
+		
 		
 //		long curTime = System.currentTimeMillis();
 		
@@ -263,15 +265,56 @@ public class EverythingPanel extends JPanel implements ActionListener{
 //		this.paintComponent(g);
 //	}
 	
+	private long currTime;
+	private long lastTime = System.nanoTime();
+	private static double targetFPS = 60.0;
+	private double ns = 1000000000 / targetFPS;
+	private long timers = System.currentTimeMillis();
+	private double delta = 0.0;
+	private int frames = 0;
+	private long timeSinceLast;
+	
+	// set up timer to check fps
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		currTime = System.nanoTime();
+		timeSinceLast = currTime- lastTime;
+		delta += (timeSinceLast) /ns;
+		lastTime = currTime;
+		timers += timeSinceLast;
+		//System.out.println(timeSinceLast);
+		if (delta >= 1) {
+            //tick();
+			repaint();
+			frames++;
+            delta = 0D;
+        }
+        //if(running)
+         //   render();
+        
+        
+        if(timers >= 1000000000L) {
+        	//System.out.println(System.currentTimeMillis() - timers);
+            
+            //System.out.println("FPS: " + frames);
+            frames = 0;
+            timers = 0;
+        }
 		
-		repaint();
+//		if(previousTime < currTime)
+//		{
+//			repaint();
+//			previousTime = System.currentTimeMillis();
+//		}
 		
 		
 	}
 
+	public static int getFPSTarget() {
+		return (int) targetFPS;
+	}
+	
 	public static int getTimer() {
 		return timer;
 	}
