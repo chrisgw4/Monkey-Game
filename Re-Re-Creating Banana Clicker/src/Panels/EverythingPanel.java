@@ -52,7 +52,6 @@ public class EverythingPanel extends JPanel implements ActionListener{
 	private MouseInputBanana mib = new MouseInputBanana();
 	private MouseInputPurchaseables mip = new MouseInputPurchaseables();
 	
-	private Timer gamelooptimer;
 	
 	private Purchaseable m;
 	
@@ -165,15 +164,7 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		
 		this.add(backgroundp);
 		
-		
-		
-		
-		//gamelooptimer = new Timer(getTimer(), this);
-		
-		
-		//gamelooptimer = new Timer(timer, this);
-		//gamelooptimer.setInitialDelay(15);
-		//gamelooptimer.start();
+
 		
 		this.addMouseMotionListener(ml);
 		
