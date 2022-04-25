@@ -13,6 +13,14 @@ import Panels.EverythingPanel;
 import Panels.paenltest;
 
 public class Main {
+	
+	
+	//monkey farmers
+	//monkey warriors
+	//add tooltips
+	//settings window
+	//add battle title
+	//poop
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -27,8 +35,6 @@ public class Main {
 		
 		
 		
-		//frame.setPreferredSize(new Dimension((int)(width+width*.0085), (int)(height+height*.037)));
-		//frame.setBounds(0,0,(int)(width+width*.0085), (int)(height+height*.037));
 		
 		
 		frame.setResizable(true);
