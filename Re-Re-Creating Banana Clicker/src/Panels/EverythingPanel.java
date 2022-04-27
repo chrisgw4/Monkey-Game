@@ -202,48 +202,6 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		mp.update();
 		
 		
-		
-//		long curTime = System.currentTimeMillis();
-		
-		//gamelooptimer.stop();
-//		timeStep = curTime - prevTime;
-//		if(timeStep > 16)
-//		{
-//			prevTime = curTime;
-//			
-//			gamelooptimer.start();
-//		}
-		
-		
-//		if (FPSCounter.getFps() < 59 || FPSCounter.getFps() > 61)
-//		{
-//			//int delay = FPSCounter.getFps();
-//			//gamelooptimer.setDelay();
-//			
-//		}
-		//VolatileImage base = (VolatileImage) createImage();
-		//Graphics2D g2d = base.createGraphics();
-		
-//		backgroundp.paintComponent(g);
-//		bananap.paintComponent(g);
-		
-		
-//		totalFrames++;
-//		if (System.nanoTime() > lastFPSCheck+1000000000) {
-//			lastFPSCheck = System.nanoTime();
-//			currentFPS = totalFrames;
-//			totalFrames = 0;
-//			System.out.println("FPS " + currentFPS);
-//			
-//		}
-//		Graphics2D g2d = (Graphics2D) g;
-//		g2d.setColor(Color.BLACK);
-//		g2d.drawString(String.valueOf(currentFPS), 40, 40);
-		
-		//fps.paintComponent(g);
-		
-		//g.drawImage(base, 0 ,0, null);
-		
 	}
 	
 	public Image createImage() {
@@ -332,8 +290,6 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		this.pButton.changeResolution(width, height, bananap);
 		this.mp.changeResolution(newwidth, newheight);
 		NumToWords.changeResolution(width);
-
-		//System.out.println("CHSDSD");
 	}
 	
 
