@@ -124,8 +124,11 @@ public class MapPanel extends JPanel{
 			else
 				g2d.setColor(Color.blue);
 			WinOrLoseScreenDelay++;
+			
 			g2d.drawString(mapBattle.getWinOrLose(), (int) (myWidth/2-g2d.getFontMetrics().stringWidth(mapBattle.getWinOrLose())/1.5), myHeight/2);
 			g2d.setColor(Color.black);
+			
+			
 		}
 		g2d.setFont(sf.getScoreFont());
 		g2d.drawString(NumToWords.NumToWord(mapBattle.getNumOfEnemies())+"", 0, 150);
