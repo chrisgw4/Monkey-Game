@@ -74,6 +74,7 @@ public class MapBattles {
 	
 	// makes list
 	//omg
+	// last test
 	public void makeMonkeyFightersList() {
 		int x = 0;
 		int y = 100;
