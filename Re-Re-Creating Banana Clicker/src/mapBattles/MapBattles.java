@@ -73,6 +73,7 @@ public class MapBattles {
 	
 	
 	// makes list
+	//omg
 	public void makeMonkeyFightersList() {
 		int x = 0;
 		int y = 100;
