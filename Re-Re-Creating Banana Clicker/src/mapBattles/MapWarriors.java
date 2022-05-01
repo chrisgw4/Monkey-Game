@@ -17,12 +17,19 @@ public class MapWarriors extends MapFighters{
 
 
 	public void makeImage() {
-		try {
-			setImage(ImageIO.read(new File("Re-Re-Creating Banana Clicker/Images/Warriors/" + getName() + ".png")));
-		} catch (IOException e) {
+		//try {
+			//setImage(ImageIO.read(new File("Re-Re-Creating Banana Clicker/Images/Warriors/" + getName() + ".png")));
+		//} //catch (IOException e) {
+
+			
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-		}
+		//}
+		try {
+			setImage(ImageIO.read(new File("Images/Warriors/" + getName() + ".png")));
+			}
+		catch(Exception d) {}
+
 	}
 
 }

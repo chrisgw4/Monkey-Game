@@ -50,6 +50,12 @@ public class Background {
 			img = ImageIO.read(new File("Re-Re-Creating Banana Clicker/Images/Background/background.png"));
 			//img = ImageIO.read(new File("Images/Background/background.png"));
 		} catch (IOException e) {
+
+			try {
+				img = ImageIO.read(new File("Images/Background/background.png"));
+				}
+				catch(Exception d) {}
+
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

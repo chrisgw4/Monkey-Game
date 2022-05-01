@@ -131,8 +131,16 @@ public class Purchaseable extends GlobalPosition {
 			//flip_img = ImageIO.read(new File("Images/Upgrade_Boxes/Board_Flip/flip_0.png"));
 			//flipList.add(flip_img);
 		} catch (IOException e) {
+
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+		}
+
+		try {
+			img = ImageIO.read(new File("Images/Upgrade_Boxes/" + myName + ".png"));
+		}
+		catch(Exception d) {
+			d.printStackTrace();
 		}
 		
 		for(int i = 0; i < 4; i++)
@@ -141,9 +149,17 @@ public class Purchaseable extends GlobalPosition {
 				flip_img = ImageIO.read(new File("Re-Re-Creating Banana Clicker/Images/Upgrade_Boxes/Board_Flip/flip_"+ i +".png"));
 				flipList.add(flip_img);
 			} catch (IOException e) {
+
+				
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			try {
+				flip_img = ImageIO.read(new File("Images/Upgrade_Boxes/Board_Flip/flip_"+ i +".png"));
+				flipList.add(flip_img);
+			}
+			catch(Exception d) {}
+
 		}
 		
 		
@@ -341,9 +357,17 @@ public class Purchaseable extends GlobalPosition {
 		try {
 			flip_img = ImageIO.read(new File("Re-Re-Creating Banana Clicker/Images/Upgrade_Boxes/Blank.png"));
 		} catch (IOException e) {
+
+			
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		try {
+			flip_img = ImageIO.read(new File("Images/Upgrade_Boxes/Blank.png"));
+		}
+		catch(Exception d) {}
+		
 		return flip_img;
 	}
 	

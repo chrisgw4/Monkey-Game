@@ -20,6 +20,12 @@ public class Enemies extends GlobalPosition{
 		try {
 			img = ImageIO.read(new File("Images/Banana/banana.png"));
 		} catch (IOException e) {
+
+			try {
+				img = ImageIO.read(new File("Images/Upgrade_Boxes/Blank.png"));
+				}
+				catch(Exception d) {}
+
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

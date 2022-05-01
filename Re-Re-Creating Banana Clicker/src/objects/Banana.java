@@ -53,6 +53,12 @@ public class Banana extends GlobalPosition{
 		try {
 			img = ImageIO.read(new File("Re-Re-Creating Banana Clicker/Images/Banana/banana.png"));
 		} catch (IOException e) {
+
+			try {
+				img = ImageIO.read(new File("Images/Banana/banana.png"));
+				}
+				catch(Exception d) {}
+
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

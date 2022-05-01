@@ -89,13 +89,14 @@ public class MapBattles {
 		}
 		sizeMultiplier = 1.1;
 		
-		// resets the list as to not keep adding more and more
+		/* resets the list as to not keep adding more and  */
 		myFightersList = new ArrayList<MapWarriors>();
 		
 		for(int i = 0; i < 20; i++)
 		{
 			for(int l = 0; /*l < Math.random()*10+6 &&*/ myFightersList.size()<20 && l < pList.size() /*pList.get(l).getAmountOwned()>0 && monkeyFighters[l]<10*/; l++)
 			{
+				int prevSize = myFightersList.size();
 				if(i<fightersXList.length)
 				{
 					fightersXList[i] = (int) (16*sizeMultiplier);
@@ -106,7 +107,7 @@ public class MapBattles {
 					x = 0;
 				
 				System.out.println(l);
-				// adds the respective monkey to the list for the battle
+				/* adds the respective monkey to the list for the battle */
 				if(pList.get(l).getName().equals("Monkey") && pList.get(0).getAmountOwned()>0 && monkeyFighters[0] < pList.get(0).getAmountOwned())
 				{
 					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(20*sizeMultiplier), (int)(27*sizeMultiplier)));
@@ -134,14 +135,13 @@ public class MapBattles {
 					monkeyFighters[4] = monkeyFighters[4]+1;
 				}
 				
-				if(i<myFightersList.size())
+				/* checks to see if any monkey was added to list to determine if it has to change the Y location and size */
+				if(i<myFightersList.size() && prevSize < myFightersList.size())
+				{
 					y += myFightersList.get(i).getHeight()-myFightersList.get(i).getHeight()*.6;
-				sizeMultiplier+= .2;
-				//x += myFightersList.get(i).getHeight()/1.5;
-//				if (x > myFightersList.get(i).getHeight()/1.5) 
-//				{
-//					x = 0;
-//				}
+					sizeMultiplier+= .2;
+				}
+			
 				
 			}
 
