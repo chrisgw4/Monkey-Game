@@ -92,7 +92,7 @@ public class Purchaseable extends GlobalPosition {
 	
 	private ArrayList<Image> flipList = new ArrayList<Image>();
 	
-	private static int FPS = EverythingPanel.getFPSTarget();
+	private static int FPS;
 	//private int myY;
 	
 	//Purchaseable m = new Purchaseable(width*.3, height*.3, "Monkey", 10.0, 172*width/1920, 46*height/1080);
@@ -116,7 +116,8 @@ public class Purchaseable extends GlobalPosition {
 		//myImage = "/Images/Upgrade_Boxes/" + myName + ".png";
 		//myFlipImage = "/Images/Upgrade_Boxes/Board_Flip/flip_" + myFrame + ".png";
 		myFrame = 4;
-		myDelay = 5*(FPS/60);
+		myDelay = (int)(5*(FPS/60.0));
+		System.out.println(FPS/60 + " FSDJH:DHSLKD");
 		myDelayCount = 0;
 		showBoard = false;
 		
@@ -163,6 +164,10 @@ public class Purchaseable extends GlobalPosition {
 		}
 		
 		
+	}
+
+	public static void setFPS(int fps) {
+		FPS = fps;
 	}
 
 	
@@ -367,7 +372,7 @@ public class Purchaseable extends GlobalPosition {
 			flip_img = ImageIO.read(new File("Images/Upgrade_Boxes/Blank.png"));
 		}
 		catch(Exception d) {}
-		
+
 		return flip_img;
 	}
 	

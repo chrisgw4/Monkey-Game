@@ -96,6 +96,8 @@ public class PurchaseablePanel extends JPanel{
 		Purchaseable.pp = this;
 		pbutton = pb;
 		prbutton = prb;
+
+		Purchaseable.setFPS(ePanel.getFPSTarget());
 		
 		m = new Warriors(0, 0, "Monkey", 10.0, width, height, 1);
 		b = new Warriors(0, myHeight*.18, "Orangutan", 10.0, width, height, 5);
@@ -286,7 +288,7 @@ public class PurchaseablePanel extends JPanel{
 		{
 			if(ePanel.getFPS() >= 30)
 			{
-				System.out.println(ePanel.getFPS());
+				//System.out.println(ePanel.getFPS());
 				p.update(ePanel.getFPS());
 			}
 			else
@@ -309,25 +311,25 @@ public class PurchaseablePanel extends JPanel{
 		if (pList.get(0).getY() > 0 && pList.get(0).getY() <= 20)
 		{
 			for(Purchaseable d: pList)
-				d.setY(d.getY()-1);
+				d.setY((int)(d.getY()-1*(60.0/ePanel.getFPS())));
 			
 		}
 		if (pList.get(0).getY() >= 20 && pList.get(0).getY() <= 100)
 		{
 			for(Purchaseable d: pList)
-				d.setY(d.getY()-3);
+				d.setY((int)(d.getY()-3*(60.0/ePanel.getFPS())));
 			
 		}
 		if (pList.get(0).getY() > 100 && pList.get(0).getY() <= myHeight)
 		{
 			for(Purchaseable d: pList)
-				d.setY(d.getY()-5);
+				d.setY((int)(d.getY()-5*(60.0/ePanel.getFPS())));
 			this.resetScrollAmountMWP();
 		}
 		if (pList.get(0).getY() > myHeight)
 		{
 			for(Purchaseable d: pList)
-				d.setY(d.getY()-15);
+				d.setY((int) (d.getY()-15*(60.0/ePanel.getFPS())));
 			this.resetScrollAmountMWP();
 		}
 	}
@@ -337,28 +339,28 @@ public class PurchaseablePanel extends JPanel{
 				//this.purchaseList.get(purchaseList.size()-1).getY() >= -30)
 		{
 			for(Purchaseable d: pList)
-				d.setY(d.getY()+15);
+				d.setY((int)(d.getY()+15));
 			this.resetScrollAmountMWP();
 		}
 		if (pList.get(pList.size()-1).getY() <= myHeight*.4 && 
 				pList.get(pList.size()-1).getY() >= -25)
 		{
 			for(Purchaseable d: pList)
-				d.setY(d.getY()+6);
+				d.setY((int)(d.getY()+6));
 			this.resetScrollAmountMWP();
 		}
 		if (pList.get(pList.size()-1).getY() >= myHeight*.4 && 
 				pList.get(pList.size()-1).getY() <= myHeight*.7)
 		{
 			for(Purchaseable d: pList)
-				d.setY(d.getY()+3);
+				d.setY((int)(d.getY()+3));
 			
 		}
 		if (pList.get(pList.size()-1).getY() >= myHeight*.7 && 
 				pList.get(pList.size()-1).getY() <= myHeight*.8)
 		{
 			for(Purchaseable d: pList)
-				d.setY(d.getY()+1);
+				d.setY((int)(d.getY()+1));
 			
 		}
 	}
@@ -368,7 +370,7 @@ public class PurchaseablePanel extends JPanel{
 			//this.purchaseList.get(purchaseList.size()-1).getY() >= -30)
 		{
 		for(Purchaseable d: pList)
-			d.setY(d.getY()+(int)(35*(height/1080.0)));
+			d.setY(d.getY()+(int)(35*(height/1080.0)*(60.0/ePanel.getFPS())));
 		}
 		else
 		{
@@ -441,7 +443,7 @@ public class PurchaseablePanel extends JPanel{
 		{
 			for(Purchaseable d: pList)
 			{
-				d.setY(d.getY()+(int)(35*(height/1080.0)));//*(height/1080.0));
+				d.setY(d.getY()+(int)(35*(height/1080.0)*(60.0/ePanel.getFPS())));//*(height/1080.0));
 
 			}
 		}

@@ -212,7 +212,7 @@ public class EverythingPanel extends JPanel implements ActionListener{
 	
 	private long currTime;
 	private long lastTime = System.nanoTime();
-	private static double targetFPS = 120.0;
+	private static double targetFPS = 30.0;
 	private double ns = 1000000000 / targetFPS;
 	private long timers = System.currentTimeMillis();
 	private double delta = 0.0;
@@ -260,7 +260,10 @@ public class EverythingPanel extends JPanel implements ActionListener{
 	}
 
 	public int getFPS() {
-		return fps.getFps();
+		if(fps.getFps() >= 30 && targetFPS >= 30)
+			return fps.getFps();
+		else
+			return (int)targetFPS;
 	}
 
 	
