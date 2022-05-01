@@ -335,33 +335,55 @@ public class PurchaseablePanel extends JPanel{
 	}
 	
 	public void movePurchaseablesDown(ArrayList<Purchaseable> pList) {
-		if (pList.get(pList.size()-1).getY() <= -25) //&& 
+		int fps = ePanel.getFPSTarget();
+
+		/*if (pList.get(pList.size()-1).getY() <= -25) //&& 
 				//this.purchaseList.get(purchaseList.size()-1).getY() >= -30)
 		{
 			for(Purchaseable d: pList)
-				d.setY((int)(d.getY()+15));
+				d.setY((int)(d.getY()+15*(60.0/fps)));
 			this.resetScrollAmountMWP();
 		}
-		if (pList.get(pList.size()-1).getY() <= myHeight*.4 && 
-				pList.get(pList.size()-1).getY() >= -25)
+		else if (pList.get(pList.size()-1).getY() <= myHeight*.4 && 
+		 		pList.get(pList.size()-1).getY() > -25)
 		{
-			for(Purchaseable d: pList)
-				d.setY((int)(d.getY()+6));
-			this.resetScrollAmountMWP();
+		 	for(Purchaseable d: pList)
+		 		d.setY((int)(d.getY()+6*(60.0/fps)));
+		 	this.resetScrollAmountMWP();
 		}
-		if (pList.get(pList.size()-1).getY() >= myHeight*.4 && 
+		else if (pList.get(pList.size()-1).getY() >= myHeight*.4 && 
 				pList.get(pList.size()-1).getY() <= myHeight*.7)
 		{
 			for(Purchaseable d: pList)
-				d.setY((int)(d.getY()+3));
+				d.setY((int)(d.getY()+5*(60.0/fps)));
 			
 		}
-		if (pList.get(pList.size()-1).getY() >= myHeight*.7 && 
+		else if (pList.get(pList.size()-1).getY() >= myHeight*.7 && 
 				pList.get(pList.size()-1).getY() <= myHeight*.8)
 		{
 			for(Purchaseable d: pList)
-				d.setY((int)(d.getY()+1));
+				d.setY((int)(d.getY()+3*(60.0/fps)));
 			
+		} */
+		if (pList.get(pList.size()-1).getY() <= -25)
+		{
+			this.resetScrollAmountMWP();
+			pList.get(pList.size()-1).setY(pList.get(pList.size()-1).getY()+10);
+			for(int i = 0; i < pList.size()-1; i++)
+			{
+				pList.get(i).setY(pList.get(i).getY() + 10);
+			}
+		}
+
+		if (pList.get(pList.size()-1).getY() <= myHeight*.4 && 
+			pList.get(pList.size()-1).getY() > -25)
+		{
+			//this.resetScrollAmountMWP();
+			pList.get(pList.size()-1).setY((int)(pList.get(pList.size()-1).getY() + 7*60/fps));
+			for(int i = 0; i < pList.size()-1; i++)
+			{
+				pList.get(i).setY((int)(pList.get(i).getY() + 7*60/fps));
+			}
 		}
 	}
 	
@@ -425,14 +447,14 @@ public class PurchaseablePanel extends JPanel{
 				pList.get(pList.size()-1).getY() <= myHeight*.5) // .7 normally
 		{
 			for(Purchaseable d: pList)
-				d.setY(d.getY()+3);
+				d.setY(d.getY()+5);
 			
 		}
 		else if (pList.get(pList.size()-1).getY() >= myHeight*.5 && // .6 normally
 				pList.get(pList.size()-1).getY() <= myHeight*.6) // .8 normally
 		{
 			for(Purchaseable d: pList)
-				d.setY(d.getY()+1);
+				d.setY(d.getY()+3);
 			
 		}
 	}
