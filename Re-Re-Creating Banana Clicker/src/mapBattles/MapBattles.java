@@ -71,10 +71,17 @@ public class MapBattles {
 		return numOfFighters;
 	}
 	
+	
+	// makes list
+	//omg
+	// last test
 	public void makeMonkeyFightersList() {
 		int x = 0;
 		int y = 100;
 		double sizeMultiplier = 1.3;
+		
+		int[] monkeyFighters = new int[6];
+		
 		for(int i = 0; i < fightersXList.length; i++)
 		{
 			fightersXList[i] = (int) (16*sizeMultiplier);
@@ -87,7 +94,7 @@ public class MapBattles {
 		
 		for(int i = 0; i < 20; i++)
 		{
-			for(int l = 0; l < Math.random()*10+1 && myFightersList.size()<20; l++)
+			for(int l = 0; /*l < Math.random()*10+6 &&*/ myFightersList.size()<20 && l < pList.size() /*pList.get(l).getAmountOwned()>0 && monkeyFighters[l]<10*/; l++)
 			{
 				if(i<fightersXList.length)
 				{
@@ -97,17 +104,36 @@ public class MapBattles {
 				//System.out.println(i);
 				if(x >= fightersXList.length)
 					x = 0;
-
-				if(pList.get(l).getName().equals("Monkey"))
+				
+				System.out.println(l);
+				// adds the respective monkey to the list for the battle
+				if(pList.get(l).getName().equals("Monkey") && pList.get(0).getAmountOwned()>0 && monkeyFighters[0] < pList.get(0).getAmountOwned())
+				{
 					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(20*sizeMultiplier), (int)(27*sizeMultiplier)));
-				else if(pList.get(l).getName().equals("Orangutan"))
+					monkeyFighters[0] = monkeyFighters[0]+1;
+				}
+				else if(pList.get(l).getName().equals("Orangutan") && pList.get(1).getAmountOwned()>0 && monkeyFighters[1] < pList.get(1).getAmountOwned())
+				{
 					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(26*sizeMultiplier), (int)(31*sizeMultiplier)));
-				else if(pList.get(l).getName().equals("Mandrill"))
+					monkeyFighters[1] = monkeyFighters[1]+1;
+					System.out.println("BIGGIE CHEESe");
+				}
+				else if(pList.get(l).getName().equals("Mandrill") && pList.get(2).getAmountOwned()>0 && monkeyFighters[2] < pList.get(2).getAmountOwned())
+				{
 					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(16*sizeMultiplier), (int)(41*sizeMultiplier)));
-				else if(pList.get(l).getName().equals("Gorilla"))
-					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(23*sizeMultiplier), (int)(39*sizeMultiplier)));
-				else if(pList.get(l).getName().equals("Chimpanzee"))
+					monkeyFighters[2] = monkeyFighters[2]+1;
+				}
+				else if(pList.get(l).getName().equals("Chimpanzee") && pList.get(3).getAmountOwned()>0 && monkeyFighters[3] < pList.get(3).getAmountOwned())
+				{
 					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(17*sizeMultiplier), (int)(33*sizeMultiplier)));//pList.get(l).getName()));
+					monkeyFighters[3] = monkeyFighters[3]+1;
+				}
+				else if(pList.get(l).getName().equals("Gorilla") && pList.get(4).getAmountOwned()>0 && monkeyFighters[4] < pList.get(4).getAmountOwned())
+				{
+					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(23*sizeMultiplier), (int)(39*sizeMultiplier)));
+					monkeyFighters[4] = monkeyFighters[4]+1;
+				}
+				
 				if(i<myFightersList.size())
 					y += myFightersList.get(i).getHeight()-myFightersList.get(i).getHeight()*.6;
 				sizeMultiplier+= .2;
