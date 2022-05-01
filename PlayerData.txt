@@ -1,0 +1,4 @@
+Total Bananas:
+0.0
+Completed Battles:
+0

@@ -47,7 +47,8 @@ public class Background {
 //		}
 		//System.out.println(directory.getAbsolutePath());
 		try {
-			img = ImageIO.read(new File("Images/Background/background.png"));
+			img = ImageIO.read(new File("Re-Re-Creating Banana Clicker/Images/Background/background.png"));
+			//img = ImageIO.read(new File("Images/Background/background.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
