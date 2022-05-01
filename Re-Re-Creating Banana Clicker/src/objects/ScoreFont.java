@@ -36,7 +36,7 @@ public class ScoreFont {
 //			
 //			scoreFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(24f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/score.ttf")));
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Re-Re-Creating Banana Clicker/Fonts/score.ttf")));
 		}
 		catch(IOException | FontFormatException e) {
 			
@@ -56,7 +56,7 @@ public class ScoreFont {
 //			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/score.ttf")));
 			
 			// These two lines load it from the file instead of from inside the src
-			scoreFont = Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/score.ttf")).deriveFont(Font.PLAIN, size);
+			scoreFont = Font.createFont(Font.TRUETYPE_FONT, new File("Re-Re-Creating Banana Clicker/Fonts/score.ttf")).deriveFont(Font.PLAIN, size);
 		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		}
 		catch(IOException | FontFormatException e) {
@@ -70,7 +70,7 @@ public class ScoreFont {
 	
 	public void changeFontSize(int size) {
 		try {
-			scoreFont = Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/score.ttf")).deriveFont(Font.PLAIN, size);
+			scoreFont = Font.createFont(Font.TRUETYPE_FONT, new File("Re-Re-Creating Banana Clicker/Fonts/score.ttf")).deriveFont(Font.PLAIN, size);
 		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		}
 		catch(IOException | FontFormatException e) {
