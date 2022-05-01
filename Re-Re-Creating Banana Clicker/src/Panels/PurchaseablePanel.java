@@ -54,11 +54,13 @@ public class PurchaseablePanel extends JPanel{
 	private MouseInputBuyMonkeys mibm;
 	
 	private MouseInputBuyProducers mibp;
+
+	private EverythingPanel ePanel;
 	
 	
 
 	public PurchaseablePanel(int width, int height, MouseLocation ml, MouseInputPurchaseables mi, PurchaseablesButton pb,
-			Player p, ProducersButton prb) {
+			Player p, ProducersButton prb, EverythingPanel ep) {
 		this.width = width;
 		this.height = height;
 		this.setLayout(null);
@@ -67,6 +69,8 @@ public class PurchaseablePanel extends JPanel{
 		
 		this.ml = ml;
 		this.mi = mi;
+
+		ePanel = ep;
 		
 		
 		myX = (int)(width * .07);
@@ -280,7 +284,13 @@ public class PurchaseablePanel extends JPanel{
 		
 		for(Producers p: getProducerList())
 		{
-			p.update();
+			if(ePanel.getFPS() >= 30)
+			{
+				System.out.println(ePanel.getFPS());
+				p.update(ePanel.getFPS());
+			}
+			else
+				;
 		}
 		
 	}

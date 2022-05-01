@@ -112,12 +112,12 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		
 		
 		backgroundp = new BackgroundPanel(width, height);
-		bananap = new BananaPanel(width, height, ml, mib);
+		bananap = new BananaPanel(width, height, ml, mib, this);
 		
 		prbutton = new ProducersButton(bananap.getX(), bananap.getY(), bananap.getLength(), bananap.getHeight(), width, height);
 		pButton = new PurchaseablesButton(bananap.getX(), bananap.getY(), bananap.getLength(), bananap.getHeight(), width, height);
 		
-		purchaseablep = new PurchaseablePanel(width, height, ml, mip, pButton, player, prbutton);
+		purchaseablep = new PurchaseablePanel(width, height, ml, mip, pButton, player, prbutton, this);
 		
 		pButton.setPPanel(purchaseablep);
 		pButton.initializeMouseInput();
@@ -209,14 +209,10 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		return g;
 	}
 	
-//	public void repaint() {
-//		Graphics g = this.getGraphics();
-//		this.paintComponent(g);
-//	}
 	
 	private long currTime;
 	private long lastTime = System.nanoTime();
-	private static double targetFPS = 60.0;
+	private static double targetFPS = 120.0;
 	private double ns = 1000000000 / targetFPS;
 	private long timers = System.currentTimeMillis();
 	private double delta = 0.0;
@@ -258,6 +254,16 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		
 		
 	}
+
+	public long getTPF() {
+		return timeSinceLast;
+	}
+
+	public int getFPS() {
+		return fps.getFps();
+	}
+
+	
 
 	public static int getFPSTarget() {
 		return (int) targetFPS;

@@ -40,9 +40,9 @@ public class BananaPanel extends JPanel {
 	
 	//private ScoreFont score_font;
 	
+	private EverythingPanel ePanel;
 	
-	
-	public BananaPanel(int width, int height, MouseLocation ml, MouseInputBanana mi) {
+	public BananaPanel(int width, int height, MouseLocation ml, MouseInputBanana mi, EverythingPanel ep) {
 		this.width = width;
 		this.height = height;
 		b = new Banana(0,0, this.width, this.height);
@@ -51,6 +51,8 @@ public class BananaPanel extends JPanel {
 		this.setBounds((int) (width*.1), (int) (height*.07), (int) (width*.18), (int) (height*.3));
 		
 		//score_font = sF;
+
+		ePanel = ep;
 		
 		myX = (int)(width*.1);
 		
@@ -81,7 +83,7 @@ public class BananaPanel extends JPanel {
 		
 		
 		Graphics2D g2d = (Graphics2D) g;
-		
+		b.updateFPS(ePanel.getFPS());
 		
 		
 //		if (!ml.mouseInBanana())

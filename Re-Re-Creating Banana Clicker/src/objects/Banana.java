@@ -31,6 +31,8 @@ public class Banana extends GlobalPosition{
 	private int baseY;
 	
 	private Image img;
+
+	private int myFPS = 1;
 	
 	public Banana(double x, double y, int width, int height) {
 		super(x, y);
@@ -68,8 +70,14 @@ public class Banana extends GlobalPosition{
 	private boolean moveUp = false;
 	//private int delayTimer = 3;
 	
-	private int delayTimer = 12;
+	private int delayTimer = 12*myFPS;
 	private int delayCounter = 0;
+
+	public void updateFPS(int fps) {
+		myFPS = fps;
+		if(fps >= 30)
+			delayTimer = 12*myFPS/60;
+	}
 	
 	public void draw(Graphics2D g2d) {
 		if(getY() > baseY-10 && !moveUp && delayCounter >= delayTimer)

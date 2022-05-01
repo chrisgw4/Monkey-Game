@@ -16,8 +16,8 @@ public class Producers extends Purchaseable{
 		myBasePrice = cost;
 	}
 	
-	public void update() {
-		EverythingPanel.getPlayer().setCount((productionAmount/60)*this.getAmountOwned());
+	public void update(double FPS) {
+		EverythingPanel.getPlayer().setCount((productionAmount/FPS)*this.getAmountOwned());
 		//System.out.println(this.productionAmount*this.getAmountOwned());
 	}
 	
