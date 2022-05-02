@@ -50,6 +50,7 @@ public class MapBattles {
 		scaleEnemies();
 		//myImageList = new ArrayList<Image>(plist.size());
 		myFightersList = new ArrayList<MapWarriors>(plist.size());
+		myEnemiesList = new ArrayList<MapEnemies>(plist.size());
 		
 	}
 	
@@ -92,6 +93,7 @@ public class MapBattles {
 		
 		/* resets the list as to not keep adding more and  */
 		myFightersList = new ArrayList<MapWarriors>();
+		myEnemiesList = new ArrayList<MapEnemies>();
 		
 		for(int i = 0; i < 20; i++)
 		{
@@ -141,13 +143,15 @@ public class MapBattles {
 				{
 					y += myFightersList.get(i).getHeight()-myFightersList.get(i).getHeight()*.6;
 					sizeMultiplier+= .2;
+					
+					myEnemiesList.add(new MapEnemies(300,myFightersList.get(0).getY(), "Jaguar", 64, 64));
 				}
 			
 				
 			}
 
 		}
-		System.out.println(myFightersList.size() + "FKJOFJSD");
+		//System.out.println(myFightersList.size() + "FKJOFJSD");
 		
 		
 		
@@ -188,6 +192,11 @@ public class MapBattles {
 //				
 //			}
 //		}
+		for(MapEnemies me: myEnemiesList)
+		{
+			me.makeImage();
+		}
+		
 		for(MapWarriors mp: myFightersList) 
 		{
 			mp.makeImage();
@@ -207,6 +216,12 @@ public class MapBattles {
 //		}
 		int i = 0;
 		int p = 0;
+		
+		for(MapEnemies me: myEnemiesList)
+		{
+			me.draw(g2d);
+		}
+		
 		for(MapFighters mp: myFightersList) 
 		{
 			mp.draw(g2d);
