@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import CountLargeNumbers.NumToWords;
+import Panels.EverythingPanel;
 import Panels.PurchaseablePanel;
 import objects.Button;
 import objects.Player;
@@ -40,12 +41,16 @@ public class MapPanel extends JPanel{
 	
 	private Player player;
 	
-	public MapPanel(int width, int height, PurchaseablePanel pp, Player p) {
+	private EverythingPanel ePanel;
+	
+	public MapPanel(int width, int height, PurchaseablePanel pp, Player p, EverythingPanel ep) {
 		screenWidth = width;
 		screenHeight = height;
 		
 		myWidth = (int) (width * .47);
 		myHeight = (int) (height * .6);
+		
+		ePanel = ep;
 		
 		myX = (int) (width * .47);
 		
@@ -68,8 +73,10 @@ public class MapPanel extends JPanel{
 	public void update() {
 		if(mapBattle.isStarted())
 		{
-			if(this.battleDelay >= 200)//18)
+			System.out.println(ePanel.getFPS());
+			if(this.battleDelay >= 200*(ePanel.getFPS()/60.0))//18)
 			{
+				System.out.println(200*(ePanel.getFPS()/60));
 				battleDelay = 0;
 				//mapBattle.determineBattle();
 				// passes player through to add or subtract bananas based on win or lose
@@ -84,7 +91,7 @@ public class MapPanel extends JPanel{
 			showWinOrLoseScreen = true;
 		}
 		
-		if(WinOrLoseScreenDelay == 60) 
+		if(WinOrLoseScreenDelay == 60*(ePanel.getFPS()/60.0)) 
 		{
 			WinOrLoseScreenDelay = 0;
 			showWinOrLoseScreen = false;

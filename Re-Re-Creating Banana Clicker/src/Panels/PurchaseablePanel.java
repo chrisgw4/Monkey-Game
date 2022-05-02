@@ -378,7 +378,7 @@ public class PurchaseablePanel extends JPanel{
 		else if (pList.get(pList.size()-1).getY() <= myHeight*.4 && 
 			pList.get(pList.size()-1).getY() > -25)
 		{
-			//this.resetScrollAmountMWP();
+			this.resetScrollAmountMWP();
 			pList.get(pList.size()-1).setY((int)(pList.get(pList.size()-1).getY() + 7*60/fps));
 			for(int i = 0; i < pList.size()-1; i++)
 			{

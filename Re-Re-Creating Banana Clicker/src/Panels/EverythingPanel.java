@@ -136,7 +136,7 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		//this.add(new TextPanel());
 		
 		sp = new SidePanel(width, height);
-		mp = new MapPanel(width, height, purchaseablep, player);
+		mp = new MapPanel(width, height, purchaseablep, player, this);
 		
 		
 		//this.add(new DungeonPanel(width, height));
@@ -260,7 +260,7 @@ public class EverythingPanel extends JPanel implements ActionListener{
 	}
 
 	public int getFPS() {
-		if(fps.getFps() >= 30 && targetFPS >= 30)
+		if(fps.getFps() >= targetFPS-10 && targetFPS >= 30)
 			return fps.getFps();
 		else
 			return (int)targetFPS;

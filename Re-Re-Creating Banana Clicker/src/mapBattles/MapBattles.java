@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import Panels.EverythingPanel;
 import objects.Player;
 import objects.Purchaseable;
 import objects.Warriors;
@@ -222,7 +223,7 @@ public class MapBattles {
 			//for(MapFighters mf: myEnemiesList)
 			{
 				if(p < this.fightersXMoveList.length )//&& !(mp.getX()+5 > mf.getX()))
-					mp.setX(mp.getX()+this.fightersXMoveList[p]);
+					mp.setX((int)(mp.getX()+(this.fightersXMoveList[p])*(60.0/EverythingPanel.getFPSTarget())));
 			}
 			
 			
