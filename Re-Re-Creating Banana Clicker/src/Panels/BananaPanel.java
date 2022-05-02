@@ -15,9 +15,9 @@ import javax.swing.JPanel;
 import input.MouseInput;
 import input.MouseInputBanana;
 import input.MouseLocation;
+import mapBattles.Button;
 import objects.Background;
 import objects.Banana;
-import objects.Button;
 import objects.ScoreFont;
 
 public class BananaPanel extends JPanel {

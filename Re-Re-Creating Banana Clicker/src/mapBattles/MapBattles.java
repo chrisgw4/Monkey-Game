@@ -42,16 +42,21 @@ public class MapBattles {
 	private ArrayList<MapWarriors> myFightersList;
 	
 	private ArrayList<MapEnemies> myEnemiesList;
+
+	private int screenWidth;
+	private int screenHeight;
 	
 	
-	public MapBattles(ArrayList<Purchaseable> plist) {
+	public MapBattles(ArrayList<Purchaseable> plist, int width, int height) {
 		
 		pList = plist;
 		scaleEnemies();
 		//myImageList = new ArrayList<Image>(plist.size());
 		myFightersList = new ArrayList<MapWarriors>(plist.size());
 		myEnemiesList = new ArrayList<MapEnemies>(plist.size());
-		
+
+		screenWidth = width;
+		screenHeight = height;
 	}
 	
 	
@@ -75,11 +80,9 @@ public class MapBattles {
 	
 	
 	// makes list
-	//omg
-	// last test
 	public void makeMonkeyFightersList() {
 		int x = fightersXList.length-1;
-		int y = 200;
+		int y = (int)(280*((screenHeight/1080.0)));//(screenWidth/1920.0)));
 		double sizeMultiplier = 1.3;
 		int length = 59;
 		int height = 49;
@@ -111,7 +114,7 @@ public class MapBattles {
 				if(x < 0)
 					x = 0;
 				
-				System.out.println(l);
+				//System.out.println(l);
 				/* adds the respective monkey to the list for the battle */
 				if(pList.get(l).getName().equals("Monkey") && pList.get(0).getAmountOwned()>0 && monkeyFighters[0] < pList.get(0).getAmountOwned())
 				{
@@ -153,7 +156,7 @@ public class MapBattles {
 				if(i<myFightersList.size() && prevSize < myFightersList.size())
 				{
 					y += myFightersList.get(i).getHeight()-myFightersList.get(i).getHeight()*.6;
-					sizeMultiplier += .2;
+					sizeMultiplier += .4;
 					
 					myEnemiesList.add(new MapEnemies(300,myFightersList.get(0).getY(), "Jaguar", 64, 64));
 				}
@@ -163,11 +166,11 @@ public class MapBattles {
 			
 
 		}
-		for(int i = myFightersList.size()/2; i<myFightersList.size(); i++)
+		for(int i = 0; i<myFightersList.size(); i++)
 		{
 			myFightersList.get(i).setY(myFightersList.get(i).getY()+20);
-			myFightersList.get(i).setX(myFightersList.get(i).getX()-70);
-			System.out.println("CH");
+			myFightersList.get(i).setX(myFightersList.get(i).getX()-30*i);
+			//System.out.println("CH");
 		}
 		//System.out.println(myFightersList.size() + "FKJOFJSD");
 		
@@ -219,19 +222,15 @@ public class MapBattles {
 		{
 			mp.makeImage();
 		}
+
+		for (Purchaseable p: pList) 
+		{
+			((Warriors)p).updateTempOwned();
+		}
 	}
 	
 	
 	public void drawWarriors(Graphics2D g2d) {
-//		for(String str: myWarriorsList)
-//		{
-//			try {
-//				g2d.drawImage(null, 0, 0, 0, 0, null, null);
-//			}
-//			catch(Exception e) {
-//				
-//			}
-//		}
 		int i = 0;
 		int p = 0;
 		
@@ -252,20 +251,12 @@ public class MapBattles {
 				mp.setY(mp.getY()+ fightersYList[i-1]+fightersYList[0]);
 			//System.out.println("CHS");
 			p = (int) (Math.random()*fightersXMoveList.length);
-			System.out.println(p);
+			//System.out.println(p);
 			//for(MapFighters mf: myEnemiesList)
 			{
 				if(p < this.fightersXMoveList.length )//&& !(mp.getX()+5 > mf.getX()))
 					mp.setX((int)(mp.getX()+(this.fightersXMoveList[p])*(60.0/EverythingPanel.getFPSTarget())));
 			}
-			
-			
-//			else
-//			{
-//				//p = 0;
-//				mp.setX(mp.getX()+this.fightersXMoveList[p]);
-//			}
-			//p++;
 		}
 		
 	}
@@ -274,11 +265,11 @@ public class MapBattles {
 		numOfFighters = 0;
 		if(!battleStarted)
 		{
-			makeMonkeyFightersList();
+			//makeMonkeyFightersList();
 			for (Purchaseable p: pList) 
 			{
 				numOfFighters += p.getAmountOwned()*((Warriors)(p)).getHitPoints();
-				((Warriors)p).updateTempOwned();
+				//((Warriors)p).updateTempOwned();
 			}
 			battleStarted = true;
 		}
@@ -330,7 +321,7 @@ public class MapBattles {
 				player.setCount(numOfEnemies*-1.5);
 		}
 		//System.out.println(this.numOfFighters);
-		System.out.println(numOfEnemies);
+		//System.out.println(numOfEnemies);
 		numOfFighters = 0;
 		battleStarted = false;
 		if(numOfEnemies < 0)
@@ -356,7 +347,10 @@ public class MapBattles {
 		return battleStarted;
 	}
 
-	
+	public void changeResolution(int width, int height) {
+		screenWidth = width;
+		screenHeight = height;
+	}
 
 	
 }
