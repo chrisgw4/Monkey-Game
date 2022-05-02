@@ -3,9 +3,13 @@ package mapBattles;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import CountLargeNumbers.NumToWords;
@@ -43,6 +47,8 @@ public class MapPanel extends JPanel{
 	
 	private EverythingPanel ePanel;
 	
+	private Image myBackgroundImg;
+	
 	public MapPanel(int width, int height, PurchaseablePanel pp, Player p, EverythingPanel ep) {
 		screenWidth = width;
 		screenHeight = height;
@@ -68,6 +74,19 @@ public class MapPanel extends JPanel{
 		//this.add(startButton);
 		//b = new Button(myWidth, myHeight);
 		this.add(startButton);
+		
+		try {
+			myBackgroundImg = ImageIO.read(new File("Re-Re-Creating Banana Clicker/Images/MapBattles/Background/background.png"));
+			//img = ImageIO.read(new File("Images/Background/background.png"));
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		
+		try {
+			myBackgroundImg = ImageIO.read(new File("Images/MapBattles/Background/background.png"));
+			}
+			catch(Exception d) {}
 	}
 	
 	public void update() {
@@ -116,7 +135,8 @@ public class MapPanel extends JPanel{
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		
-		super.paintComponent(g);
+		//super.paintComponent(g);
+		g2d.drawImage(myBackgroundImg, myWidth, myHeight, 0, 0, null);
 		
 		if(showWinOrLoseScreen) {
 			//System.out.print(mapBattle.getWinOrLose());
