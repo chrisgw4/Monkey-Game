@@ -38,6 +38,10 @@ public class MapPanel extends JPanel{
 	
 	private int battleDelay = 0;
 	
+	private int startDelay = 0;
+	
+	private boolean startMapBattleDelay = false;
+	
 	private int WinOrLoseScreenDelay = 0;
 	private boolean showWinOrLoseScreen = false;
 	
@@ -48,6 +52,7 @@ public class MapPanel extends JPanel{
 	private EverythingPanel ePanel;
 	
 	private Image myBackgroundImg;
+	private Image myFightSignImg;
 	
 	public MapPanel(int width, int height, PurchaseablePanel pp, Player p, EverythingPanel ep) {
 		screenWidth = width;
@@ -87,6 +92,19 @@ public class MapPanel extends JPanel{
 			myBackgroundImg = ImageIO.read(new File("Images/MapBattles/Background/background.png"));
 			}
 			catch(Exception d) {}
+		
+		try {
+			myFightSignImg = ImageIO.read(new File("Re-Re-Creating Banana Clicker/Images/MapBattles/Fight_Sign/fight_sign.png"));
+			//img = ImageIO.read(new File("Images/Background/background.png"));
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		
+		try {
+			myFightSignImg = ImageIO.read(new File("Images/MapBattles/Fight_sign/fight_sign.png"));
+			}
+			catch(Exception d) {}
 	}
 	
 	public void update() {
@@ -121,13 +139,25 @@ public class MapPanel extends JPanel{
 		if(startButton.getModel().isPressed() && !mapBattle.isStarted() && !(mapBattle.getWinOrLose().equals("You Win") || mapBattle.getWinOrLose().equals("You Lose"))) //(e.getSource() == startButton)
 		{
 			startButton.setPressed(true);
+			startMapBattleDelay = true;
 			// Starts the battle when pressed
-			mapBattle.startBattle();
+			
 			//System.out.println("CHEESE");
 		}
 		else if (!startButton.getModel().isPressed())
 		{
 			startButton.setPressed(false);
+		}
+		
+		if(startMapBattleDelay)
+		{
+			startDelay++;
+		}
+		if(startDelay >= 60)
+		{
+			mapBattle.startBattle();
+			startMapBattleDelay = false;
+			startDelay = 0;
 		}
 		
 	}
@@ -137,6 +167,9 @@ public class MapPanel extends JPanel{
 		
 		//super.paintComponent(g);
 		g2d.drawImage(myBackgroundImg, 0, 0, myWidth, myHeight, null);
+		
+		if(startDelay < 60 && startMapBattleDelay)
+			g2d.drawImage(myFightSignImg, 100, 100, myWidth/2, myHeight/2, null);
 		
 		if(showWinOrLoseScreen) {
 			//System.out.print(mapBattle.getWinOrLose());
@@ -158,6 +191,8 @@ public class MapPanel extends JPanel{
 			
 			
 		}
+		
+		
 		g2d.drawString(mapBattle.getWinOrLose(), 20, 20);
 		g2d.setFont(sf.getScoreFont());
 		g2d.drawString(NumToWords.NumToWord(mapBattle.getNumOfEnemies())+"", 0, 150);
