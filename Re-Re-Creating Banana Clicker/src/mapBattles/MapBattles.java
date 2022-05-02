@@ -29,7 +29,7 @@ public class MapBattles {
 	
 	private int[] fightersXList = {0, 20, 40, 60, 80};
 	
-	private int[] fightersYList = {8, 16, 24, 32, 40};
+	private int[] fightersYList = {32, 40, 48, 56, 64};//{8, 16, 24, 32, 40};
 	
 	private int[] fightersXMoveList = {2, 4, 6, 8};
 	
@@ -78,7 +78,7 @@ public class MapBattles {
 	// last test
 	public void makeMonkeyFightersList() {
 		int x = 0;
-		int y = 100;
+		int y = 200;
 		double sizeMultiplier = 1.3;
 		
 		int[] monkeyFighters = new int[6];
@@ -118,7 +118,7 @@ public class MapBattles {
 				{
 					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(26*sizeMultiplier), (int)(31*sizeMultiplier)));
 					monkeyFighters[1] = monkeyFighters[1]+1;
-					System.out.println("BIGGIE CHEESe");
+					//System.out.println("BIGGIE CHEESe");
 				}
 				else if(pList.get(l).getName().equals("Mandrill") && pList.get(2).getAmountOwned()>0 && monkeyFighters[2] < pList.get(2).getAmountOwned())
 				{

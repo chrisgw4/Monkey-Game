@@ -136,7 +136,7 @@ public class MapPanel extends JPanel{
 		Graphics2D g2d = (Graphics2D) g;
 		
 		//super.paintComponent(g);
-		g2d.drawImage(myBackgroundImg, myWidth, myHeight, 0, 0, null);
+		g2d.drawImage(myBackgroundImg, 0, 0, myWidth, myHeight, null);
 		
 		if(showWinOrLoseScreen) {
 			//System.out.print(mapBattle.getWinOrLose());
