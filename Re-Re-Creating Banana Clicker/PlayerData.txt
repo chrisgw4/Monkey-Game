@@ -1,4 +1,4 @@
 Total Bananas:
-2.5161425516173175E8
+2.885258098555196E8
 Completed Battles:
-18
+19

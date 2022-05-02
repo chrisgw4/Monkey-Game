@@ -112,6 +112,7 @@ public class MapPanel extends JPanel{
 		super.paintComponent(g);
 		
 		if(showWinOrLoseScreen) {
+			//System.out.print(mapBattle.getWinOrLose());
 			ScoreFont sf2 = new ScoreFont(24*(screenWidth/1920));
 			g2d.setFont(sf2.getScoreFont());
 			//g2d.getFontMetrics().stringWidth(mapBattle.getWinOrLose()
@@ -130,6 +131,7 @@ public class MapPanel extends JPanel{
 			
 			
 		}
+		g2d.drawString(mapBattle.getWinOrLose(), 20, 20);
 		g2d.setFont(sf.getScoreFont());
 		g2d.drawString(NumToWords.NumToWord(mapBattle.getNumOfEnemies())+"", 0, 150);
 		g2d.drawString(NumToWords.NumToWord(mapBattle.getNumOfFighters())+"", 0, 200);

@@ -375,7 +375,7 @@ public class PurchaseablePanel extends JPanel{
 			}
 		}
 
-		if (pList.get(pList.size()-1).getY() <= myHeight*.4 && 
+		else if (pList.get(pList.size()-1).getY() <= myHeight*.4 && 
 			pList.get(pList.size()-1).getY() > -25)
 		{
 			//this.resetScrollAmountMWP();
@@ -385,14 +385,24 @@ public class PurchaseablePanel extends JPanel{
 				pList.get(i).setY((int)(pList.get(i).getY() + 7*60/fps));
 			}
 		}
+		
+		else if (pList.get(pList.size()-1).getY() >= myHeight*.4 && 
+				pList.get(pList.size()-1).getY() <= myHeight*.7)
+		{
+			pList.get(pList.size()-1).setY((int)(pList.get(pList.size()-1).getY() + 9*60/fps));
+			for(int i = 0; i < pList.size()-1; i++)
+			{
+				pList.get(i).setY((int)(pList.get(i).getY() + 9*60/fps));
+			}
+		}
 	}
 	
 	public void movePurchaseablesDownFast(ArrayList<Purchaseable> pList) {
 		if (purchaseList.get(0).getY() < 0) //&& 
 			//this.purchaseList.get(purchaseList.size()-1).getY() >= -30)
 		{
-		for(Purchaseable d: pList)
-			d.setY(d.getY()+(int)(35*(height/1080.0)*(60.0/ePanel.getFPS())));
+			for(Purchaseable d: pList)
+				d.setY(d.getY()+(int)(35*(height/1080.0)*(60.0/ePanel.getFPS())));
 		}
 		else
 		{
