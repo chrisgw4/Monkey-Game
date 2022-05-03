@@ -223,7 +223,7 @@ public class Purchaseable extends GlobalPosition {
 		if (!showStats)
 		{
 			
-			g2d.drawImage(getFlipImage(), getX(), getY(), myLength, myHeight, null);
+			g2d.drawImage(getFlipImage(), (int)(getX()), (int)(getY()), myLength, myHeight, null);
 			if(myFrame >3)
 			{
 				showBoard = true;
@@ -238,11 +238,11 @@ public class Purchaseable extends GlobalPosition {
 				isFlipped = true;
 			}
 //			if (isFlipped)
-			g2d.drawImage(img, getX(), getY(), myLength, myHeight, null);
+			g2d.drawImage(img, (int)(getX()), (int)(getY()), myLength, myHeight, null);
 		}
 		else if (showStats && myFrame <= 3)
 		{
-			g2d.drawImage(getFlipImage(), getX(), getY(), myLength, myHeight, null);
+			g2d.drawImage(getFlipImage(), (int)(getX()), (int)(getY()), myLength, myHeight, null);
 		}
 		
 		
@@ -252,7 +252,7 @@ public class Purchaseable extends GlobalPosition {
 		//g2d.setFont();
 		g2d.setColor(Color.white);
 		
-		g2d.drawString(NumToWords.truncateNumberThousands(amountOwned)+"",(int) (myX+myLength+myLength*.01), myY+myHeight);
+		g2d.drawString(NumToWords.truncateNumberThousands(amountOwned)+"",(int) (myX+myLength+myLength*.01), (int)(myY+myHeight));
 		
 		if (showStats)
 		{
@@ -261,7 +261,7 @@ public class Purchaseable extends GlobalPosition {
 			{
 				
 				g2d.setFont(sf2.getScoreFont());
-				g2d.drawImage(getBackBoardImage(), getX(), getY(), myLength, myHeight, null);
+				g2d.drawImage(getBackBoardImage(), (int)(getX()), (int)(getY()), myLength, myHeight, null);
 				//g2d.drawString((int)myPrice+"",(int) (myX+myLength*.04), (int)(myY+myHeight*.7));
 				//g2d.drawString(nf.format(myPrice)+"",(int) (myX+myLength*.04), (int)(myY+myHeight*.7));
 				//g2d.drawString(printPrice+"",(int) (myX+myLength*.04), (int)(myY+myHeight*.45));

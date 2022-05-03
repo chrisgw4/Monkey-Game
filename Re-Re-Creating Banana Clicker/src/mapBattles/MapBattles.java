@@ -1,12 +1,9 @@
 package mapBattles;
 
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
+import javax.lang.model.util.ElementScanner6;
 
 import Panels.EverythingPanel;
 import objects.Player;
@@ -292,15 +289,46 @@ public class MapBattles {
 			myFightersList.get(i).setY(myFightersList.get(i).getFinalY()+(yList[myFightersList.get(i).getYIndx()]*3));
 
 			if(myFightersList.get(i).getSpazDelayCounter() >= myFightersList.get(i).getSpazDelay()*(ePanel.getFPS()/60.0))
-			{
-				myFightersList.get(i).setXIndx(myFightersList.get(i).getXIndx()+1);
-				myFightersList.get(i).setYIndx(myFightersList.get(i).getYIndx()+1);
-				myFightersList.get(i).resetSpazDelayCounter();
-			}
+				//if((int)(myFightersList.get(i).getX()) == xList[myFightersList.get(i).getXIndx()] + myFightersList.get(i).getFinalX() &&
+				   //(int)(myFightersList.get(i).getY()) == yList[myFightersList.get(i).getYIndx()] + myFightersList.get(i).getFinalY())
+				{
+					myFightersList.get(i).setXIndx(myFightersList.get(i).getXIndx()+1);
+					myFightersList.get(i).setYIndx(myFightersList.get(i).getYIndx()+1);
+					myFightersList.get(i).resetSpazDelayCounter();
+				}
 			if(myFightersList.get(i).getXIndx() >= xList.length)
 				myFightersList.get(i).setXIndx(0);
 			if(myFightersList.get(i).getYIndx() >= yList.length)
 				myFightersList.get(i).setYIndx(0);
+
+			// if(xList[myFightersList.get(i).getXIndx()] + myFightersList.get(i).getFinalX() > (int)(myFightersList.get(i).getX()))
+			// {
+			// 	myFightersList.get(i).setX((int)(myFightersList.get(i).getX())+1);
+			// }
+			// else if(xList[myFightersList.get(i).getXIndx()] + myFightersList.get(i).getFinalX()< (int)(myFightersList.get(i).getX()))
+			// {
+			// 	myFightersList.get(i).setX((int)(myFightersList.get(i).getX())-1);
+			// }
+			// else 
+			// {
+			// 	myFightersList.get(i).setX(yList[myFightersList.get(i).getXIndx()]+myFightersList.get(i).getX());
+			// 	myFightersList.get(i).setXIndx(myFightersList.get(i).getXIndx()+1);
+			// }
+			// if(yList[myFightersList.get(i).getYIndx()] + myFightersList.get(i).getFinalY()> (int)(myFightersList.get(i).getY()))
+			// {
+			// 	myFightersList.get(i).setY((int)(myFightersList.get(i).getY())+1);
+			// }
+			// else if(yList[myFightersList.get(i).getYIndx()] + myFightersList.get(i).getFinalY() < (int)(myFightersList.get(i).getY()))
+			// {
+			// 	myFightersList.get(i).setY((int)(myFightersList.get(i).getY())-1);
+			// }
+			// else
+			// {
+			//  	myFightersList.get(i).setY(yList[myFightersList.get(i).getYIndx()]+myFightersList.get(i).getY());
+				
+			// 	myFightersList.get(i).setYIndx(myFightersList.get(i).getYIndx()+1);
+			// }
+			
 		}
 		myFightersList.get(i).incrementSpazDelayCounter();
 	

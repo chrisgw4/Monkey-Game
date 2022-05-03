@@ -40,10 +40,10 @@ public class Banana extends GlobalPosition{
 		myHeight = (int)(height*.3);
 		myWidthConstant = myWidth;
 		myHeightConstant = myHeight;
-		myXConstant = this.getX();
-		myYConstant = this.getY();
+		myXConstant = (int)(getX());
+		myYConstant = (int)(getY());
 		
-		baseY = getY();
+		baseY = (int)(getY());
 //		try {
 //			image = ImageIO.read(is);
 //			
@@ -99,7 +99,7 @@ public class Banana extends GlobalPosition{
 		}
 		delayCounter++;
 		//System.out.println(delayCounter);
-		g2d.drawImage(img, this.getX(), this.getY(), myWidth, myHeight, null);
+		g2d.drawImage(img, (int)(getX()), (int)(getY()), myWidth, myHeight, null);
 		//System.out.println(getY());
 		
 	}

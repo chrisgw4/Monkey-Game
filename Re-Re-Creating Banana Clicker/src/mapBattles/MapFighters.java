@@ -94,7 +94,7 @@ public class MapFighters extends GlobalPosition{
 	}
 
 	public void saveFinalX() {
-		myFinalX = getX();
+		myFinalX = (int)(getX());
 	}
 
 	public int getFinalX() {
@@ -102,7 +102,7 @@ public class MapFighters extends GlobalPosition{
 	}
 
 	public void saveFinalY() {
-		myFinalY = getY();
+		myFinalY = (int)(getY());
 	}
 
 	public int getFinalY() {
@@ -157,7 +157,7 @@ public class MapFighters extends GlobalPosition{
 //	}
 	
 	public void draw(Graphics2D g2d) {
-		g2d.drawImage(myImage, getX(), getY(), myWidth, myHeight, null);
+		g2d.drawImage(myImage, (int)(getX()), (int)(getY()), myWidth, myHeight, null);
 	}
 	
 }

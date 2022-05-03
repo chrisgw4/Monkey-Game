@@ -138,7 +138,7 @@ public class PurchaseablePanel extends JPanel{
 		ml.setPurchaseableList(purchaseList);
 		mwpr.setMouseLocation(ml);
 		mwp.setMouseLocation(ml);
-		mwp.setLocX(producerList.get(0).getX());
+		mwp.setLocX((int)(producerList.get(0).getX()));
 		
 		mibp.setButton(prbutton);
 		mibm.setButton(pbutton);

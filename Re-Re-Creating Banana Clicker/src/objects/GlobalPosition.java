@@ -1,27 +1,27 @@
 package objects;
 
 public class GlobalPosition {
-	public int myX;
-	public int myY;
+	public double myX;
+	public double myY;
 	
 	public GlobalPosition(double x, double y) {
 		this.myX = (int)x;
 		this.myY = (int)y;
 	}
 	
-	public int getX() {
+	public double getX() {
 		return myX;
 	}
 	
-	public int getY() {
+	public double getY() {
 		return myY;
 	}
 	
 	public void setX(double x) {
-		myX = (int) x;
+		myX = x;
 	}
 	
 	public void setY(double y) {
-		myY = (int) y;
+		myY = y;
 	}
 }

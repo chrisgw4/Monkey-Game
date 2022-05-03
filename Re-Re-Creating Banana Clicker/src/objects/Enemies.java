@@ -32,7 +32,7 @@ public class Enemies extends GlobalPosition{
 	}
 	
 	public void draw(Graphics2D g2d) {
-		g2d.drawImage(img, this.getX(), this.getY(), myWidth, myHeight, null);
+		g2d.drawImage(img, (int)(getX()), (int)(getY()), myWidth, myHeight, null);
 	}
 	
 }
