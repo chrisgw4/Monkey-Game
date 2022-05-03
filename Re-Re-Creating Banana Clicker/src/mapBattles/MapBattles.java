@@ -31,7 +31,7 @@ public class MapBattles {
 	
 	private int[] fightersYList = {32, 40, 48, 56, 64};//{8, 16, 24, 32, 40};
 	
-	private int[] fightersXMoveList = {2, 4, 6, 8};
+	private int[] fightersXMoveList = {2, 4, 6, 8, 10};
 	
 	private int[] fightersYMoveList = {8, 16, 24, 32, 40};
 	
@@ -46,8 +46,11 @@ public class MapBattles {
 	private int screenWidth;
 	private int screenHeight;
 	
+	private int panelWidth;
+	private int panelHeight;
 	
-	public MapBattles(ArrayList<Purchaseable> plist, int width, int height) {
+	
+	public MapBattles(ArrayList<Purchaseable> plist, int width, int height,int pwidth, int pheight) {
 		
 		pList = plist;
 		scaleEnemies();
@@ -57,6 +60,9 @@ public class MapBattles {
 
 		screenWidth = width;
 		screenHeight = height;
+		
+		panelWidth = pwidth;
+		panelHeight = pheight;
 	}
 	
 	
@@ -155,24 +161,46 @@ public class MapBattles {
 				/* checks to see if any monkey was added to list to determine if it has to change the Y location and size */
 				if(i<myFightersList.size() && prevSize < myFightersList.size())
 				{
-					y += myFightersList.get(i).getHeight()-myFightersList.get(i).getHeight()*.6;
-					sizeMultiplier += .4;
 					
-					myEnemiesList.add(new MapEnemies(300,myFightersList.get(0).getY(), "Jaguar", 64, 64));
+					
+					y += myFightersList.get(i).getHeight()-myFightersList.get(i).getHeight()*.6;
+					sizeMultiplier += .3;
+					
+					//myEnemiesList.add(new MapEnemies(300,myFightersList.get(0).getY(), "Jaguar", 64, 64));
 				}
+				
 			
 				
 			}
 			
 
 		}
+		y = (int)(280*((screenHeight/1080.0)));
+		//x = fightersXList.length-1;
+		sizeMultiplier = 1.0;
+		
+		for(int i = 0; i < 30; i++)
+		{
+			
+			myEnemiesList.add(new MapEnemies(panelWidth*.8, y, "Jaguar", (int)(64*sizeMultiplier), (int)(64*sizeMultiplier)));
+			myEnemiesList.get(i).setSpeed(fightersXMoveList[(int) (Math.random()*fightersXMoveList.length)]);
+			y += myEnemiesList.get(i).getHeight()*.2;
+			sizeMultiplier += .15;
+		}
+		
+		
 		for(int i = 0; i<myFightersList.size(); i++)
 		{
 			myFightersList.get(i).setY(myFightersList.get(i).getY()+20);
 			myFightersList.get(i).setX(myFightersList.get(i).getX()-30*i);
+			myFightersList.get(i).setSpeed(fightersXMoveList[(int) (Math.random()*fightersXMoveList.length)]);
 			//System.out.println("CH");
 		}
-		//System.out.println(myFightersList.size() + "FKJOFJSD");
+		for(int i = 0; i<myEnemiesList.size(); i++)
+		{
+			myEnemiesList.get(i).setY(myEnemiesList.get(i).getY()-17);
+			myEnemiesList.get(i).setX(myEnemiesList.get(i).getX()+32*i);
+		}
 		
 		
 		
@@ -237,25 +265,48 @@ public class MapBattles {
 		for(MapEnemies me: myEnemiesList)
 		{
 			me.draw(g2d);
+			//p = (int) (Math.random()*fightersXMoveList.length);
+			//System.out.println(p);
+			//for(MapFighters mf: myEnemiesList)
+			{
+				//if(p < this.fightersXMoveList.length && !me.isNextToEnemy())//&& !(mp.getX()+5 > mf.getX()))
+				//	me.setX((int)(me.getX()-(this.fightersXMoveList[p])*(60.0/EverythingPanel.getFPSTarget())));
+			}
+			if(!me.isNextToEnemy())
+				me.setX(me.getX()-me.getSpeed());
 		}
 		
 		for(MapFighters mp: myFightersList) 
 		{
 			mp.draw(g2d);
-			if(i<fightersYList.length && mp.getY() <= fightersYList[i])
-			{
-				mp.setY(mp.getY()+fightersYList[i]);
-				i++;
-			}
-			else if (mp.getY() <= fightersYList[i])
-				mp.setY(mp.getY()+ fightersYList[i-1]+fightersYList[0]);
-			//System.out.println("CHS");
-			p = (int) (Math.random()*fightersXMoveList.length);
+//			if(i<fightersYList.length && mp.getY() <= fightersYList[i])
+//			{
+//				mp.setY(mp.getY()+fightersYList[i]);
+//				i++;
+//			}
+//			else if (mp.getY() <= fightersYList[i])
+//				mp.setY(mp.getY()+ fightersYList[i-1]+fightersYList[0]);
+//			//System.out.println("CHS");
+			//p = (int) (Math.random()*fightersXMoveList.length);
 			//System.out.println(p);
 			//for(MapFighters mf: myEnemiesList)
 			{
-				if(p < this.fightersXMoveList.length )//&& !(mp.getX()+5 > mf.getX()))
-					mp.setX((int)(mp.getX()+(this.fightersXMoveList[p])*(60.0/EverythingPanel.getFPSTarget())));
+//				if(p < this.fightersXMoveList.length && !mp.isNextToEnemy())//&& !(mp.getX()+5 > mf.getX()))
+//					mp.setX((int)(mp.getX()+(this.fightersXMoveList[p])*(60.0/EverythingPanel.getFPSTarget())));
+			}
+			if(!mp.isNextToEnemy())
+				mp.setX(mp.getX()+mp.getSpeed());
+		}
+		
+		for(int g = 0; g < myFightersList.size(); g++)
+		{
+			if(g < myFightersList.size() && g < myEnemiesList.size())
+			{
+				if(myFightersList.get(g).myX >= myEnemiesList.get(g).getX()-15)
+				{
+					myFightersList.get(g).setNextToEnemy(true);
+					myEnemiesList.get(g).setNextToEnemy(true); 
+				}
 			}
 		}
 		
@@ -347,9 +398,11 @@ public class MapBattles {
 		return battleStarted;
 	}
 
-	public void changeResolution(int width, int height) {
+	public void changeResolution(int width, int height, int pwidth, int pheight) {
 		screenWidth = width;
 		screenHeight = height;
+		panelWidth = pwidth;
+		panelHeight = pheight;
 	}
 
 	

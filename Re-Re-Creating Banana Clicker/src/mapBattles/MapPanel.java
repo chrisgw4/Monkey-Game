@@ -92,7 +92,7 @@ public class MapPanel extends JPanel{
 		this.setLayout(null);
 		this.setBounds(myX, myY, myWidth, myHeight);
 		
-		mapBattle = new MapBattles(pp.getPurchaseList(), screenWidth, screenHeight);
+		mapBattle = new MapBattles(pp.getPurchaseList(), screenWidth, screenHeight, myWidth, myHeight);
 		
 		startButton = new Button(myWidth, myHeight, width, height);
 		sButton = new StartButton(myWidth,myHeight,screenWidth,screenHeight);
@@ -340,7 +340,7 @@ public class MapPanel extends JPanel{
 		
 		this.setBounds(myX, myY, myWidth, myHeight);
 
-		mapBattle.changeResolution(width, height);
+		mapBattle.changeResolution(width, height, myWidth, myHeight);
 		
 		
 		startButton.changeResolution(myWidth, myHeight, width);

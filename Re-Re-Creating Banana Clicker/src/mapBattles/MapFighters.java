@@ -18,7 +18,11 @@ public class MapFighters extends GlobalPosition{
 	private int myWidth;
 	private int myHeight;
 	
+	private int movementSpeed;
+	
 	private int myStartingX;
+	
+	private boolean isNextToEnemy;
 	
 	
 	public MapFighters(double x, double y, String name, int width, int height) {
@@ -26,7 +30,31 @@ public class MapFighters extends GlobalPosition{
 		myName = name;
 		myWidth = width;
 		myHeight = height;
+		isNextToEnemy = false;
+		movementSpeed = 0;
 		// TODO Auto-generated constructor stub
+	}
+	
+	public int getWidth() {
+		return myWidth;
+	}
+	
+	public void setSpeed(int s)
+	{
+		this.movementSpeed = s;
+	}
+	
+	public int getSpeed() {
+		return this.movementSpeed;
+	}
+	
+	public void setNextToEnemy(boolean b)
+	{
+		isNextToEnemy = b;
+	}
+	
+	public boolean isNextToEnemy() {
+		return this.isNextToEnemy;
 	}
 	
 	public void setStartingX(int x) {
