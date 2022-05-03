@@ -172,6 +172,7 @@ public class MapPanel extends JPanel{
 			WinOrLoseScreenDelay = 0;
 			showWinOrLoseScreen = false;
 			mapBattle.clearWinLose();
+			sButton.setBattleRunning(false);
 		}
 		
 		// Checks whether the button is pressed  // 2nd && checks to make sure you arent in a win or lose screen
@@ -183,6 +184,7 @@ public class MapPanel extends JPanel{
 			startMapBattleDelay = true;
 			mapBattle.makeMonkeyFightersList();
 			drawBackground = true;
+			sButton.setBattleRunning(true);
 			
 			// Starts the battle when pressed
 			
@@ -232,7 +234,7 @@ public class MapPanel extends JPanel{
 		if(startMapBattleDelay)
 		{
 			//g2d.drawImage(myFightSignImg, 100, 100, myWidth/2, myHeight/2, null);
-			g2d.drawImage(fight_sign_imgs.get(fight_sign_frame), (int)(myWidth*.36), 0, (int)(267*(screenWidth/1920.0)), (int)(683*(screenHeight/1080)), null);
+			g2d.drawImage(fight_sign_imgs.get(fight_sign_frame), (int)(myWidth*.36), 0, (int)(267*(screenWidth/1920.0)), (int)(683*(screenHeight/1080.0)), null);
 		}
 					
 		if(showWinOrLoseScreen) {
@@ -249,7 +251,7 @@ public class MapPanel extends JPanel{
 			else
 				g2d.setColor(Color.blue);
 			WinOrLoseScreenDelay++;
-			System.out.println(screenWidth);
+			//System.out.println(screenWidth);
 			//g2d.drawString(mapBattle.getWinOrLose(), (int) (myWidth/2-(g2d.getFontMetrics().stringWidth(mapBattle.getWinOrLose())/1.5)*(screenWidth/1920.0)), myHeight/2); //(int) (myWidth/2-g2d.getFontMetrics().stringWidth(mapBattle.getWinOrLose())/1.5), myHeight/2);
 			g2d.drawString(mapBattle.getWinOrLose(), (int)(myWidth*.25), (int)(myHeight*.5));
 			

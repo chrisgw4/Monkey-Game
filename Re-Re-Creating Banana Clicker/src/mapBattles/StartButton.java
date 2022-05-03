@@ -28,6 +28,13 @@ public class StartButton extends JPanel {
 	private int myY;
 	private int myWidth;
 	private int myHeight;
+
+    private int height;
+    private int width;
+
+    private int myWidthConstant;
+    private int myHeightConstant;
+
 	private int screenWidth;
 	private int screenHeight;
 	
@@ -40,13 +47,19 @@ public class StartButton extends JPanel {
     private MouseMovement mm = new MouseMovement();
     private MouseClick mc = new MouseClick();
 
+    private boolean mapBattleRunning = false;
+
     public StartButton(int width, int height, int baseWidth, int baseHeight) {
-		myX = (int) (width*.25);
-		myY = (int) (height*.05);
+		myX = (int)(width/2.0-myWidth/2.0);
+		myY = (int) (height/2-myHeight);
 		myWidth = 105*2;
 		myHeight = 45*2;
+        myWidthConstant = myWidth;
+        myHeightConstant = myHeight;
+        this.height = height;
+        this.width = width;
         
-		this.setBounds(width/2-myWidth/2,height/2-myHeight, myWidth, myHeight);
+		this.setBounds((int)(width/2.0-myWidth/2.0),height/2-myHeight, myWidth, myHeight);
 
 		screenWidth = baseWidth;
 		screenHeight = baseHeight;
@@ -63,14 +76,6 @@ public class StartButton extends JPanel {
         
 	}
 
-    public void draw(Graphics2D g2d)
-    {
-        
-        g2d.drawImage(myImg, 0, 0, 100, 40, null);
-        g2d.setFont(sf.getScoreFont());
-        g2d.setColor(Color.BLACK);
-        g2d.drawString("Start", 30, 40);
-    }
 
     public void paintComponent(Graphics g)
     {
@@ -78,12 +83,18 @@ public class StartButton extends JPanel {
         
         //this.setBackground(Color.white);
         //super.paintComponent(g);
+
         Graphics2D g2d = (Graphics2D) g;
-        
-        g2d.drawImage(myImg, 0, 0, myWidth, myHeight, null);
+        if(!mapBattleRunning)
+            g2d.drawImage(myImg, 0, 0, myWidth, myHeight, null);
+
         //g2d.setFont(sf.getScoreFont());
         //g2d.setColor(Color.BLACK);
         //g2d.drawString("Start", 30, 40);
+    }
+
+    public void setBattleRunning(boolean b) {
+        mapBattleRunning = b;
     }
 
     public void update() {
@@ -95,7 +106,20 @@ public class StartButton extends JPanel {
         else
             gotPressed = !true;
         
-        //System.out.println(gotPressed);
+        if(mc.isInPanel())
+        {
+            myWidth = (int)(myWidthConstant*1.2);
+            myHeight = (int)(myHeightConstant*1.2);
+            this.setSize(myWidth, myHeight);
+            this.setLocation((int)(width/2.0-myWidth/2.3), height/2-myHeight);
+            //this.setBounds((int)(width/2.0-myWidth/2.0), height/2-myHeight, myWidth, myHeight);
+        }
+        else
+        {
+            myWidth = (int)(myWidthConstant);
+            myHeight = (int)(myHeightConstant);
+            this.setBounds((int)(width/2.0-myWidth/2.3),height/2-myHeight, myWidth, myHeight);
+        }
     }
 
 
