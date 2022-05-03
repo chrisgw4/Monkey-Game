@@ -274,6 +274,11 @@ public class MapBattles {
 			}
 			if(!me.isNextToEnemy())
 				me.setX(me.getX()-me.getSpeed());
+			
+			if(me.isNextToEnemy())
+			{
+				
+			}
 		}
 		
 		for(MapFighters mp: myFightersList) 
