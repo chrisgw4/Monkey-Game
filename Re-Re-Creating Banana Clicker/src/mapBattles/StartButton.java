@@ -73,6 +73,9 @@ public class StartButton extends JPanel {
 		try {
             myImg = ImageIO.read(new File("Re-Re-Creating Banana Clicker/Images/MapBattles/Start_Button/Start_Sign.png"));
         } catch(Exception e) {}
+        try {
+            myImg = ImageIO.read(new File("Images/MapBattles/Start_Button/Start_Sign.png"));
+        } catch(Exception e) {}
         
 	}
 
