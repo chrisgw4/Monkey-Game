@@ -72,13 +72,15 @@ public class MapPanel extends JPanel{
 	private boolean drawBackground = false;
 
 	private StartButton sButton;
+
+	
 	
 	public MapPanel(int width, int height, PurchaseablePanel pp, Player p, EverythingPanel ep) {
 		screenWidth = width;
 		screenHeight = height;
 		
-		myWidth = (int) (width * .49/*.47*/);
-		myHeight = (int) (height * .63/*.6*/);
+		myWidth = (int) (width * .46);//.51/*.49.47*/);
+		myHeight = (int) (height * .6);//.63/*.6*/);
 		
 		ePanel = ep;
 		
@@ -96,10 +98,19 @@ public class MapPanel extends JPanel{
 		
 		startButton = new Button(myWidth, myHeight, width, height);
 		sButton = new StartButton(myWidth,myHeight,screenWidth,screenHeight);
+
+		
+
+		
+
 		//this.add(startButton);
 		//b = new Button(myWidth, myHeight);
 		//this.add(startButton);
+
+		//this.add(mpb);
+
 		this.add(sButton);
+		
 		
 		startButton.setBounds(0, 0, 100, 100);
 		
@@ -262,9 +273,9 @@ public class MapPanel extends JPanel{
 		
 		
 		if(drawBackground)
-			g2d.drawImage(myBackgroundImg, (int)(myWidth*.01), (int)(myHeight*.011),(int) (myWidth*.98),(int) (myHeight*.985), null);
+			g2d.drawImage(myBackgroundImg, (int)(myWidth*.01), (int)(myHeight*.011),(int) (myWidth),(int) (myHeight), null);
 		else 
-			g2d.drawImage(myStartScreen,(int)(myWidth*.01), (int)(myHeight*.011),(int) (myWidth*.98),(int) (myHeight*.985), null);
+			g2d.drawImage(myStartScreen,(int)(myWidth*.01), (int)(myHeight*.011),(int) (myWidth),(int) (myHeight), null);
 		
 		if(screenWiping)
 		{
@@ -326,7 +337,7 @@ public class MapPanel extends JPanel{
 		if(mapBattle.isStarted())
 			mapBattle.drawWarriors(g2d);
 		
-		g2d.drawImage(mapBorder, 0, 0,(int) (myWidth),(int) (myHeight), null);
+		
 	}
 	
 	public void changeResolution(int width, int height) {
@@ -345,6 +356,7 @@ public class MapPanel extends JPanel{
 		
 		startButton.changeResolution(myWidth, myHeight, width);
 		sButton.changeResolution(width, height, myWidth, myHeight);
+		
 		
 	}
 

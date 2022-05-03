@@ -224,6 +224,88 @@ public class MapBattles {
 			((Warriors)p).updateTempOwned();
 		}
 	}
+
+	public void drawEnemies(int i, Graphics2D g2d, int[] xList, int[] yList) // i is index
+	{
+		myEnemiesList.get(i).draw(g2d);
+		if(myEnemiesList.get(i).getXIndx() == -1 && myEnemiesList.get(i).getYIndx() == -1)
+		{
+			myEnemiesList.get(i).setXIndx((int)(Math.random()*xList.length));
+			myEnemiesList.get(i).setYIndx((int)(Math.random()*yList.length));
+		}
+		
+		
+		if(!myEnemiesList.get(i).isNextToEnemy())
+			myEnemiesList.get(i).setX(myEnemiesList.get(i).getX()-myEnemiesList.get(i).getSpeed()*(60.0/ePanel.getFPS()));
+		
+		if(myEnemiesList.get(i).isNextToEnemy())
+		{
+			if(!myEnemiesList.get(i).isFinalSaved())
+			{
+				myEnemiesList.get(i).saveFinalX();
+				myEnemiesList.get(i).saveFinalY();
+				myEnemiesList.get(i).setFinalSaved(true);
+			}
+			myEnemiesList.get(i).setX(myEnemiesList.get(i).getFinalX()+(xList[myEnemiesList.get(i).getXIndx()]*3));
+			
+			myEnemiesList.get(i).setY(myEnemiesList.get(i).getFinalY()+(yList[myEnemiesList.get(i).getYIndx()]*3));
+
+			if(myEnemiesList.get(i).getSpazDelayCounter() >= myEnemiesList.get(i).getSpazDelay()*(ePanel.getFPS()/60.0))
+			{
+				myEnemiesList.get(i).setXIndx(myEnemiesList.get(i).getXIndx()+1);
+				myEnemiesList.get(i).setYIndx(myEnemiesList.get(i).getYIndx()+1);
+				myEnemiesList.get(i).resetSpazDelayCounter();
+			}
+			if(myEnemiesList.get(i).getXIndx() >= xList.length)
+				myEnemiesList.get(i).setXIndx(0);
+			if(myEnemiesList.get(i).getYIndx() >= yList.length)
+			myEnemiesList.get(i).setYIndx(0);
+		}
+		myEnemiesList.get(i).incrementSpazDelayCounter();
+	
+		
+	}
+
+	public void drawWarriors(int i, Graphics2D g2d, int[] xList, int[] yList) // i is index
+	{
+		myFightersList.get(i).draw(g2d);
+		if(myFightersList.get(i).getXIndx() == -1 && myFightersList.get(i).getYIndx() == -1)
+		{
+			myFightersList.get(i).setXIndx((int)(Math.random()*xList.length));
+			myFightersList.get(i).setYIndx((int)(Math.random()*yList.length));
+		}
+		
+		
+		if(!myFightersList.get(i).isNextToEnemy())
+			myFightersList.get(i).setX(myFightersList.get(i).getX()+myFightersList.get(i).getSpeed()*(60.0/ePanel.getFPS()));
+		
+		if(myFightersList.get(i).isNextToEnemy())
+		{
+			if(!myFightersList.get(i).isFinalSaved())
+			{
+				myFightersList.get(i).saveFinalX();
+				myFightersList.get(i).saveFinalY();
+				myFightersList.get(i).setFinalSaved(true);
+			}
+			myFightersList.get(i).setX(myFightersList.get(i).getFinalX()+(xList[myFightersList.get(i).getXIndx()]*3));
+			
+			myFightersList.get(i).setY(myFightersList.get(i).getFinalY()+(yList[myFightersList.get(i).getYIndx()]*3));
+
+			if(myFightersList.get(i).getSpazDelayCounter() >= myFightersList.get(i).getSpazDelay()*(ePanel.getFPS()/60.0))
+			{
+				myFightersList.get(i).setXIndx(myFightersList.get(i).getXIndx()+1);
+				myFightersList.get(i).setYIndx(myFightersList.get(i).getYIndx()+1);
+				myFightersList.get(i).resetSpazDelayCounter();
+			}
+			if(myFightersList.get(i).getXIndx() >= xList.length)
+				myFightersList.get(i).setXIndx(0);
+			if(myFightersList.get(i).getYIndx() >= yList.length)
+				myFightersList.get(i).setYIndx(0);
+		}
+		myFightersList.get(i).incrementSpazDelayCounter();
+	
+		
+	}
 	
 	
 	public void drawWarriors(Graphics2D g2d) {
@@ -234,92 +316,98 @@ public class MapBattles {
 		//int[] yList = {0, -8, -8, -10, -7, 0, -8};
 		
 		
-
-		
-
-
-		for(MapEnemies me: myEnemiesList)
+		for(int i = 0; i < myFightersList.size(); i++)
 		{
-			me.draw(g2d);
-			if(me.getXIndx() == -1 && me.getYIndx() == -1)
-			{
-				me.setXIndx((int)(Math.random()*xList.length));
-				me.setYIndx((int)(Math.random()*yList.length));
-			}
-			//p = (int) (Math.random()*fightersXMoveList.length);
-			//System.out.println(p);
-			//for(MapFighters mf: myEnemiesList)
-			{
-				//if(p < this.fightersXMoveList.length && !me.isNextToEnemy())//&& !(mp.getX()+5 > mf.getX()))
-				//	me.setX((int)(me.getX()-(this.fightersXMoveList[p])*(60.0/EverythingPanel.getFPSTarget())));
-			}
-			if(!me.isNextToEnemy())
-				me.setX(me.getX()-me.getSpeed()*(60.0/ePanel.getFPS()));
 			
-			if(me.isNextToEnemy())
-			{
-				if(!me.isFinalSaved())
-				{
-					me.saveFinalX();
-					me.saveFinalY();
-					me.setFinalSaved(true);
-				}
-				me.setX(me.getFinalX()+(xList[me.getXIndx()]*3));
-				
-				me.setY(me.getFinalY()+(yList[me.getYIndx()]*3));
-
-				if(me.getSpazDelayCounter() >= me.getSpazDelay()*(ePanel.getFPS()/60.0))
-				{
-					me.setXIndx(me.getXIndx()+1);
-					me.setYIndx(me.getYIndx()+1);
-					me.resetSpazDelayCounter();
-				}
-				if(me.getXIndx() >= xList.length)
-					me.setXIndx(0);
-				if(me.getYIndx() >= yList.length)
-					me.setYIndx(0);
-			}
-			me.incrementSpazDelayCounter();
+			drawWarriors(i, g2d, xList, yList);
+			drawEnemies(i, g2d, xList, yList);
 		}
 		
-		for(MapFighters mp: myFightersList) 
-		{
-			mp.draw(g2d);	
+
+
+		// for(MapEnemies me: myEnemiesList)
+		// {
+		// 	me.draw(g2d);
+		// 	if(me.getXIndx() == -1 && me.getYIndx() == -1)
+		// 	{
+		// 		me.setXIndx((int)(Math.random()*xList.length));
+		// 		me.setYIndx((int)(Math.random()*yList.length));
+		// 	}
+		// 	//p = (int) (Math.random()*fightersXMoveList.length);
+		// 	//System.out.println(p);
+		// 	//for(MapFighters mf: myEnemiesList)
+		// 	{
+		// 		//if(p < this.fightersXMoveList.length && !me.isNextToEnemy())//&& !(mp.getX()+5 > mf.getX()))
+		// 		//	me.setX((int)(me.getX()-(this.fightersXMoveList[p])*(60.0/EverythingPanel.getFPSTarget())));
+		// 	}
+		// 	if(!me.isNextToEnemy())
+		// 		me.setX(me.getX()-me.getSpeed()*(60.0/ePanel.getFPS()));
 			
-			if(mp.getXIndx() == -1 && mp.getYIndx() == -1)
-			{
-				mp.setXIndx((int)(Math.random()*xList.length));
-				mp.setYIndx((int)(Math.random()*yList.length));
-			}
-
-			if(!mp.isNextToEnemy())
-				mp.setX(mp.getX()+mp.getSpeed()*(60.0/ePanel.getFPS()));
-
-			if(mp.isNextToEnemy())
-			{
-				if(!mp.isFinalSaved())
-				{
-					mp.saveFinalX();
-					mp.saveFinalY();
-					mp.setFinalSaved(true);
-				}
-				mp.setX(mp.getFinalX()+(xList[mp.getXIndx()]*3));
+		// 	if(me.isNextToEnemy())
+		// 	{
+		// 		if(!me.isFinalSaved())
+		// 		{
+		// 			me.saveFinalX();
+		// 			me.saveFinalY();
+		// 			me.setFinalSaved(true);
+		// 		}
+		// 		me.setX(me.getFinalX()+(xList[me.getXIndx()]*3));
 				
-				mp.setY(mp.getFinalY()+(yList[mp.getYIndx()]*3));
+		// 		me.setY(me.getFinalY()+(yList[me.getYIndx()]*3));
 
-				if(mp.getSpazDelayCounter() >= mp.getSpazDelay()*(ePanel.getFPS()/60.0))
-				{
-					mp.setXIndx(mp.getXIndx()+1);
-					mp.setYIndx(mp.getYIndx()+1);
-					mp.resetSpazDelayCounter();
-				}
-				if(mp.getXIndx() >= xList.length)
-					mp.setXIndx(0);
-				if(mp.getYIndx() >= yList.length)
-					mp.setYIndx(0);
-			}
-			mp.incrementSpazDelayCounter();
-		}
+		// 		if(me.getSpazDelayCounter() >= me.getSpazDelay()*(ePanel.getFPS()/60.0))
+		// 		{
+		// 			me.setXIndx(me.getXIndx()+1);
+		// 			me.setYIndx(me.getYIndx()+1);
+		// 			me.resetSpazDelayCounter();
+		// 		}
+		// 		if(me.getXIndx() >= xList.length)
+		// 			me.setXIndx(0);
+		// 		if(me.getYIndx() >= yList.length)
+		// 			me.setYIndx(0);
+		// 	}
+		// 	me.incrementSpazDelayCounter();
+		// }
+		
+		// for(MapFighters mp: myFightersList) 
+		// {
+		// 	mp.draw(g2d);	
+			
+		// 	if(mp.getXIndx() == -1 && mp.getYIndx() == -1)
+		// 	{
+		// 		mp.setXIndx((int)(Math.random()*xList.length));
+		// 		mp.setYIndx((int)(Math.random()*yList.length));
+		// 	}
+
+		// 	if(!mp.isNextToEnemy())
+		// 		mp.setX(mp.getX()+mp.getSpeed()*(60.0/ePanel.getFPS()));
+				
+
+		// 	if(mp.isNextToEnemy())
+		// 	{
+		// 		if(!mp.isFinalSaved())
+		// 		{
+		// 			mp.saveFinalX();
+		// 			mp.saveFinalY();
+		// 			mp.setFinalSaved(true);
+		// 		}
+		// 		mp.setX(mp.getFinalX()+(xList[mp.getXIndx()]*3));
+				
+		// 		mp.setY(mp.getFinalY()+(yList[mp.getYIndx()]*3));
+
+		// 		if(mp.getSpazDelayCounter() >= mp.getSpazDelay()*(ePanel.getFPS()/60.0))
+		// 		{
+		// 			mp.setXIndx(mp.getXIndx()+1);
+		// 			mp.setYIndx(mp.getYIndx()+1);
+		// 			mp.resetSpazDelayCounter();
+		// 		}
+		// 		if(mp.getXIndx() >= xList.length)
+		// 			mp.setXIndx(0);
+		// 		if(mp.getYIndx() >= yList.length)
+		// 			mp.setYIndx(0);
+		// 	}
+		// 	mp.incrementSpazDelayCounter();
+		// }
 		
 		for(int g = 0; g < myFightersList.size(); g++)
 		{

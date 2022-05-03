@@ -30,6 +30,7 @@ import input.MouseInputPurchaseables;
 import input.MouseLocation;
 import mapBattles.Button;
 import mapBattles.MapPanel;
+import mapBattles.MapPanelBorder;
 import objects.Player;
 import objects.Purchaseable;
 import objects.ScoreFont;
@@ -80,6 +81,8 @@ public class EverythingPanel extends JPanel implements ActionListener{
 	private SidePanel sp;
 	
 	private MapPanel mp;
+
+	private MapPanelBorder mpb;
 	
 	
 	//private ScoreFont scoreF = new ScoreFont(player);
@@ -137,6 +140,8 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		
 		sp = new SidePanel(width, height);
 		mp = new MapPanel(width, height, purchaseablep, player, this);
+
+		mpb = new MapPanelBorder(mp.getWidth(), mp.getHeight(), mp.getX(), mp.getY());
 		
 		
 		//this.add(new DungeonPanel(width, height));
@@ -157,6 +162,8 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		this.add(bananap);
 		
 		this.add(sp);
+
+		this.add(mpb);
 		
 		this.add(mp);
 		
@@ -212,7 +219,7 @@ public class EverythingPanel extends JPanel implements ActionListener{
 	
 	private long currTime;
 	private long lastTime = System.nanoTime();
-	private static double targetFPS = 120.0;
+	private static double targetFPS = 60.0;
 	private double ns = 1000000000 / targetFPS;
 	private long timers = System.currentTimeMillis();
 	private double delta = 0.0;
@@ -298,6 +305,9 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		this.prbutton.changeResolution(width, height, bananap);
 		this.pButton.changeResolution(width, height, bananap);
 		this.mp.changeResolution(newwidth, newheight);
+
+		mpb.changeResolution(mp.getWidth(), mp.getHeight(), mp.getX(), mp.getY());
+
 		NumToWords.changeResolution(width);
 	}
 	
