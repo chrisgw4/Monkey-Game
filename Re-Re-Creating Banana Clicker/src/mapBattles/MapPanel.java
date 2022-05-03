@@ -92,7 +92,7 @@ public class MapPanel extends JPanel{
 		this.setLayout(null);
 		this.setBounds(myX, myY, myWidth, myHeight);
 		
-		mapBattle = new MapBattles(pp.getPurchaseList(), screenWidth, screenHeight, myWidth, myHeight);
+		mapBattle = new MapBattles(pp.getPurchaseList(), screenWidth, screenHeight, myWidth, myHeight, ep);
 		
 		startButton = new Button(myWidth, myHeight, width, height);
 		sButton = new StartButton(myWidth,myHeight,screenWidth,screenHeight);
@@ -180,7 +180,7 @@ public class MapPanel extends JPanel{
 		if(mapBattle.isStarted())
 		{
 			//System.out.println(ePanel.getFPS());
-			if(this.battleDelay >= 200*(ePanel.getFPS()/60.0))//18)
+			if(this.battleDelay >= 900*(ePanel.getFPS()/60.0))//18)
 			{
 				//System.out.println(200*(ePanel.getFPS()/60));
 				battleDelay = 0;

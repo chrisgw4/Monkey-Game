@@ -23,7 +23,16 @@ public class MapFighters extends GlobalPosition{
 	private int myStartingX;
 	
 	private boolean isNextToEnemy;
+
+	private int myFinalX;
+	private boolean saveFinalX;
+	private int myFinalY;
 	
+	private int myXIndx;
+	private int myYIndx;
+
+	private int mySpazDelay;
+	private int mySpazDelayCounter;
 	
 	public MapFighters(double x, double y, String name, int width, int height) {
 		super(x, y);
@@ -32,7 +41,72 @@ public class MapFighters extends GlobalPosition{
 		myHeight = height;
 		isNextToEnemy = false;
 		movementSpeed = 0;
+
+		saveFinalX = false;
+
+		myXIndx = -1;
+		myYIndx = -1;
+
+		mySpazDelayCounter = 0;
+		mySpazDelay = 3;
+		
 		// TODO Auto-generated constructor stub
+	}
+
+	public int getSpazDelayCounter() {
+		return mySpazDelayCounter;
+	}
+
+	public void incrementSpazDelayCounter() {
+		mySpazDelayCounter++;
+	}
+
+	public void resetSpazDelayCounter() {
+		mySpazDelayCounter = 0;
+	}
+
+	public int getSpazDelay() {
+		return mySpazDelay;
+	}
+
+	public void setXIndx(int i) {
+		myXIndx = i;
+	}
+
+	public int getXIndx() {
+		return myXIndx;
+	}
+
+	public void setYIndx(int i) {
+		myYIndx = i;
+	}
+
+	public int getYIndx() {
+		return myYIndx;
+	}
+
+	public boolean isFinalSaved() {
+		return saveFinalX;
+	}
+
+	public void setFinalSaved(boolean b) {
+		saveFinalX = b;
+	}
+
+	public void saveFinalX() {
+		myFinalX = getX();
+	}
+
+	public int getFinalX() {
+		return myFinalX;
+	}
+
+	public void saveFinalY() {
+		myFinalY = getY();
+	}
+
+	public int getFinalY() {
+		return myFinalY;
 	}
 	
 	public int getWidth() {

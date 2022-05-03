@@ -48,9 +48,11 @@ public class MapBattles {
 	
 	private int panelWidth;
 	private int panelHeight;
+
+	private EverythingPanel ePanel;
 	
 	
-	public MapBattles(ArrayList<Purchaseable> plist, int width, int height,int pwidth, int pheight) {
+	public MapBattles(ArrayList<Purchaseable> plist, int width, int height,int pwidth, int pheight, EverythingPanel ep) {
 		
 		pList = plist;
 		scaleEnemies();
@@ -63,6 +65,8 @@ public class MapBattles {
 		
 		panelWidth = pwidth;
 		panelHeight = pheight;
+
+		ePanel = ep;
 	}
 	
 	
@@ -124,36 +128,36 @@ public class MapBattles {
 				/* adds the respective monkey to the list for the battle */
 				if(pList.get(l).getName().equals("Monkey") && pList.get(0).getAmountOwned()>0 && monkeyFighters[0] < pList.get(0).getAmountOwned())
 				{
-					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(20*sizeMultiplier), (int)(27*sizeMultiplier)));
-					//myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(length*sizeMultiplier), (int)(height*sizeMultiplier)));
+					//myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(20*sizeMultiplier), (int)(27*sizeMultiplier)));
+					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(59*sizeMultiplier), (int)(49*sizeMultiplier)));
 					monkeyFighters[0] = monkeyFighters[0]+1;
 				}
 				else if(pList.get(l).getName().equals("Orangutan") && pList.get(1).getAmountOwned()>0 && monkeyFighters[1] < pList.get(1).getAmountOwned())
 				{
-					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(26*sizeMultiplier), (int)(31*sizeMultiplier)));
-					//myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(length*sizeMultiplier), (int)(height*sizeMultiplier)));
+					//myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(26*sizeMultiplier), (int)(31*sizeMultiplier)));
+					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(59*sizeMultiplier), (int)(49*sizeMultiplier)));
 					
 					monkeyFighters[1] = monkeyFighters[1]+1;
 					//System.out.println("BIGGIE CHEESe");
 				}
 				else if(pList.get(l).getName().equals("Mandrill") && pList.get(2).getAmountOwned()>0 && monkeyFighters[2] < pList.get(2).getAmountOwned())
 				{
-					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(16*sizeMultiplier), (int)(41*sizeMultiplier)));
-					//myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(length*sizeMultiplier), (int)(height*sizeMultiplier)));
+					//myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(16*sizeMultiplier), (int)(41*sizeMultiplier)));
+					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(59*sizeMultiplier), (int)(49*sizeMultiplier)));
 					
 					monkeyFighters[2] = monkeyFighters[2]+1;
 				}
 				else if(pList.get(l).getName().equals("Chimpanzee") && pList.get(3).getAmountOwned()>0 && monkeyFighters[3] < pList.get(3).getAmountOwned())
 				{
-					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(17*sizeMultiplier), (int)(33*sizeMultiplier)));//pList.get(l).getName()));
-					//myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(length*sizeMultiplier), (int)(height*sizeMultiplier)));//pList.get(l).getName()));
+					//myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(17*sizeMultiplier), (int)(33*sizeMultiplier)));//pList.get(l).getName()));
+					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(59*sizeMultiplier), (int)(49*sizeMultiplier)));//pList.get(l).getName()));
 					
 					monkeyFighters[3] = monkeyFighters[3]+1;
 				}
 				else if(pList.get(l).getName().equals("Gorilla") && pList.get(4).getAmountOwned()>0 && monkeyFighters[4] < pList.get(4).getAmountOwned())
 				{
-					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(23*sizeMultiplier), (int)(39*sizeMultiplier)));
-					//myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(length*sizeMultiplier), (int)(height*sizeMultiplier)));
+					//myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(23*sizeMultiplier), (int)(39*sizeMultiplier)));
+					myFightersList.add(new MapWarriors(fightersXList[x], y, pList.get(l).getName(), (int)(59*sizeMultiplier), (int)(49*sizeMultiplier)));
 					
 					monkeyFighters[4] = monkeyFighters[4]+1;
 				}
@@ -175,30 +179,30 @@ public class MapBattles {
 			
 
 		}
-		y = (int)(280*((screenHeight/1080.0)));
+		//y = (int)(280*((screenHeight/1080.0)));
 		//x = fightersXList.length-1;
-		sizeMultiplier = 1.1;
+		//sizeMultiplier = 1.1;
 		
 		for(int i = 0; i < myFightersList.size(); i++)
 		{
 			
-			myEnemiesList.add(new MapEnemies(panelWidth*.8, myFightersList.get(i).getY()*.99, "Jaguar", (int)(59*sizeMultiplier), (int)(49*sizeMultiplier)));
+			myEnemiesList.add(new MapEnemies(panelWidth*.8, myFightersList.get(i).getY(), "Jaguar", myFightersList.get(i).getWidth(), myFightersList.get(i).getHeight()));
 			myEnemiesList.get(i).setSpeed(fightersXMoveList[(int) (Math.random()*fightersXMoveList.length)]);
-			y += myEnemiesList.get(i).getHeight()*.4;
-			sizeMultiplier += .3;
+			//y += myFightersList.get(i).getHeight()-myFightersList.get(i).getHeight()*.6;
+			//sizeMultiplier += .3;
 		}
 		
 		
 		for(int i = 0; i<myFightersList.size(); i++)
 		{
-			myFightersList.get(i).setY(myFightersList.get(i).getY()+20);
+			//myFightersList.get(i).setY(myFightersList.get(i).getY()+20);
 			myFightersList.get(i).setX(myFightersList.get(i).getX()-30*i);
 			myFightersList.get(i).setSpeed(fightersXMoveList[(int) (Math.random()*fightersXMoveList.length)]);
 			//System.out.println("CH");
 		}
 		for(int i = 0; i<myEnemiesList.size(); i++)
 		{
-			myEnemiesList.get(i).setY(myEnemiesList.get(i).getY()-17);
+			//myEnemiesList.get(i).setY(myEnemiesList.get(i).getY()-17);
 			myEnemiesList.get(i).setX(myEnemiesList.get(i).getX()+32*i);
 		}
 		
@@ -223,12 +227,25 @@ public class MapBattles {
 	
 	
 	public void drawWarriors(Graphics2D g2d) {
-		int i = 0;
-		int p = 0;
+		int[] xList = {0, -3, -5, -8, -3,   0,  5,  6, 7, 8,   9};
+		int[] yList = {0, -4, -8, -8, -9, -10, -7, -3, 0, -4, -8};
+
+		//int[] xList = {0, -5, -8,   0,  5, 7,  9};
+		//int[] yList = {0, -8, -8, -10, -7, 0, -8};
 		
+		
+
+		
+
+
 		for(MapEnemies me: myEnemiesList)
 		{
 			me.draw(g2d);
+			if(me.getXIndx() == -1 && me.getYIndx() == -1)
+			{
+				me.setXIndx((int)(Math.random()*xList.length));
+				me.setYIndx((int)(Math.random()*yList.length));
+			}
 			//p = (int) (Math.random()*fightersXMoveList.length);
 			//System.out.println(p);
 			//for(MapFighters mf: myEnemiesList)
@@ -237,27 +254,78 @@ public class MapBattles {
 				//	me.setX((int)(me.getX()-(this.fightersXMoveList[p])*(60.0/EverythingPanel.getFPSTarget())));
 			}
 			if(!me.isNextToEnemy())
-				me.setX(me.getX()-me.getSpeed());
+				me.setX(me.getX()-me.getSpeed()*(60.0/ePanel.getFPS()));
 			
 			if(me.isNextToEnemy())
 			{
+				if(!me.isFinalSaved())
+				{
+					me.saveFinalX();
+					me.saveFinalY();
+					me.setFinalSaved(true);
+				}
+				me.setX(me.getFinalX()+(xList[me.getXIndx()]*3));
 				
+				me.setY(me.getFinalY()+(yList[me.getYIndx()]*3));
+
+				if(me.getSpazDelayCounter() >= me.getSpazDelay()*(ePanel.getFPS()/60.0))
+				{
+					me.setXIndx(me.getXIndx()+1);
+					me.setYIndx(me.getYIndx()+1);
+					me.resetSpazDelayCounter();
+				}
+				if(me.getXIndx() >= xList.length)
+					me.setXIndx(0);
+				if(me.getYIndx() >= yList.length)
+					me.setYIndx(0);
 			}
+			me.incrementSpazDelayCounter();
 		}
 		
 		for(MapFighters mp: myFightersList) 
 		{
-			mp.draw(g2d);		
+			mp.draw(g2d);	
+			
+			if(mp.getXIndx() == -1 && mp.getYIndx() == -1)
+			{
+				mp.setXIndx((int)(Math.random()*xList.length));
+				mp.setYIndx((int)(Math.random()*yList.length));
+			}
 
 			if(!mp.isNextToEnemy())
-				mp.setX(mp.getX()+mp.getSpeed());
+				mp.setX(mp.getX()+mp.getSpeed()*(60.0/ePanel.getFPS()));
+
+			if(mp.isNextToEnemy())
+			{
+				if(!mp.isFinalSaved())
+				{
+					mp.saveFinalX();
+					mp.saveFinalY();
+					mp.setFinalSaved(true);
+				}
+				mp.setX(mp.getFinalX()+(xList[mp.getXIndx()]*3));
+				
+				mp.setY(mp.getFinalY()+(yList[mp.getYIndx()]*3));
+
+				if(mp.getSpazDelayCounter() >= mp.getSpazDelay()*(ePanel.getFPS()/60.0))
+				{
+					mp.setXIndx(mp.getXIndx()+1);
+					mp.setYIndx(mp.getYIndx()+1);
+					mp.resetSpazDelayCounter();
+				}
+				if(mp.getXIndx() >= xList.length)
+					mp.setXIndx(0);
+				if(mp.getYIndx() >= yList.length)
+					mp.setYIndx(0);
+			}
+			mp.incrementSpazDelayCounter();
 		}
 		
 		for(int g = 0; g < myFightersList.size(); g++)
 		{
 			if(g < myFightersList.size() && g < myEnemiesList.size())
 			{
-				if(myFightersList.get(g).myX >= myEnemiesList.get(g).getX()-15)
+				if(myFightersList.get(g).getX() >= myEnemiesList.get(g).getX()-myEnemiesList.get(g).getWidth()/2)
 				{
 					myFightersList.get(g).setNextToEnemy(true);
 					myEnemiesList.get(g).setNextToEnemy(true); 
