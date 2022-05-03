@@ -50,16 +50,19 @@ public class StartButton extends JPanel {
     private boolean mapBattleRunning = false;
 
     public StartButton(int width, int height, int baseWidth, int baseHeight) {
-		myX = (int)(width/2.0-myWidth/2.0);
-		myY = (int) (height/2-myHeight);
+		
 		myWidth = 105*2;
 		myHeight = 45*2;
         myWidthConstant = myWidth;
         myHeightConstant = myHeight;
+
+        myX =(int)(width/2.0-myWidth/2.0);
+		myY = (int) (height/2.0-myHeight);
+
         this.height = height;
         this.width = width;
         
-		this.setBounds((int)(width/2.0-myWidth/2.0),height/2-myHeight, myWidth, myHeight);
+		this.setBounds(myX,myY, myWidth, myHeight);
 
 		screenWidth = baseWidth;
 		screenHeight = baseHeight;
@@ -114,14 +117,14 @@ public class StartButton extends JPanel {
             myWidth = (int)(myWidthConstant*1.2);
             myHeight = (int)(myHeightConstant*1.2);
             this.setSize(myWidth, myHeight);
-            this.setLocation((int)(width/2.0-myWidth/2.3), height/2-myHeight);
+            this.setLocation((int)(myX-myX*0.05), (int)(myY-myY*0.05));
             //this.setBounds((int)(width/2.0-myWidth/2.0), height/2-myHeight, myWidth, myHeight);
         }
         else
         {
             myWidth = (int)(myWidthConstant);
             myHeight = (int)(myHeightConstant);
-            this.setBounds((int)(width/2.0-myWidth/2.3),height/2-myHeight, myWidth, myHeight);
+            this.setBounds(myX, myY, myWidth, myHeight);
         }
     }
 
@@ -138,11 +141,24 @@ public class StartButton extends JPanel {
 
 	private boolean stopComparisons = false;
 	
-	public void changeResolution(int width, int height) {
-		myX = (int) (width*.25);
-		myY = (int) (height*.05);
+	public void changeResolution(int width, int height, int panelwidth, int panelheight) {
+		
 		myWidth = (int)(105*2*(width/1920.0));
 		myHeight = (int)(45*2*(height/1080.0));
+        myWidthConstant = myWidth;
+        myHeightConstant = myHeight;
+
+        myX =(int)(panelwidth/2.0-myWidth/2.0);
+		myY = (int) (panelheight/2.0-myHeight);
+
+        width = panelwidth;
+        height = panelheight;
+        screenWidth = width;
+        screenHeight = height;
+        //System.out.println(myWidth);
+        //this.width = width;
+        //this.height = height;
+
 		
 		
 		
@@ -152,8 +168,6 @@ public class StartButton extends JPanel {
 		{
 			//sf = sf2;
 			sf = new ScoreFont((int)(16.0*(width/1920.0)));
-			
-			//System.out.println("Cheee");
 			
 			stopComparisons = true;
 		}
