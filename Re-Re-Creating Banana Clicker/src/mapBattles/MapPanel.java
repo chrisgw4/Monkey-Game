@@ -255,9 +255,10 @@ public class MapPanel extends JPanel{
 				fight_sign_frame = 0;
 			}
 		}
-		if(startDelay >= 120*(ePanel.getFPS()/60.0) && (fight_sign_frame >= 37 || fight_sign_frame == 0)) /* make it 125 to keep the top part of the sign "the wire" broken*/
+		if(startDelay >= 120*(ePanel.getFPS()/60.0) && (fight_sign_frame >= 37 || fight_sign_frame == 0) && !mapBattle.isStarted()) /* make it 125 to keep the top part of the sign "the wire" broken*/
 		{
 			mapBattle.startBattle();
+			mapBattle.determineBattle();
 			startMapBattleDelay = false;
 			startDelay = 0;
 		}

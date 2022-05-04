@@ -465,26 +465,34 @@ public class MapBattles {
 			for (Purchaseable p: pList) 
 			{
 				numOfFighters += p.getAmountOwned()*((Warriors)(p)).getHitPoints();
+				
 				//((Warriors)p).updateTempOwned();
 			}
+			
 			battleStarted = true;
 		}
 	}
 	
-	public boolean determineBattle() {
+	public void determineBattle() {
+		System.out.println(numOfFighters);
+		System.out.println(numOfEnemies);
 		if(numOfFighters >= numOfEnemies)
 		{
-			return true;
+			battleIsWon = true;
+			return;
 		}
-		return false;
+		battleIsWon = false;
 	}
+
+	private boolean battleIsWon;
 	
 	public void endBattle(Player player) {
-		if(determineBattle())
+		if(battleIsWon)
 		{
 			//for(double l = numOfEnemies; l>0;)
 			// adds a bonus to player for winning the match
 			player.setCount(numOfEnemies*2.5);
+			
 			while(numOfEnemies > 0)
 			{
 				for (Purchaseable p: pList) 
@@ -505,7 +513,7 @@ public class MapBattles {
 			
 			scaleEnemies();
 		}
-		else if(!determineBattle()) {
+		else if(!battleIsWon) {
 			for (Purchaseable p: pList) 
 			{
 				//p.setAmountOwned((int)(p.getAmountOwned()-p.getAmountOwned()*.4));
