@@ -473,9 +473,8 @@ public class MapBattles {
 		}
 	}
 	
+	// saves whether you win or lose the battle so to not let you buy during the battle and win
 	public void determineBattle() {
-		System.out.println(numOfFighters);
-		System.out.println(numOfEnemies);
 		if(numOfFighters >= numOfEnemies)
 		{
 			battleIsWon = true;
