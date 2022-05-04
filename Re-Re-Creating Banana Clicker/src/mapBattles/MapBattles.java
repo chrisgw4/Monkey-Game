@@ -266,11 +266,13 @@ public class MapBattles {
 	public void drawWarriors(int i, Graphics2D g2d, int[] xList, int[] yList) // i is index
 	{
 		myFightersList.get(i).draw(g2d);
+		
 		if(myFightersList.get(i).getXIndx() == -1 && myFightersList.get(i).getYIndx() == -1)
 		{
 			myFightersList.get(i).setXIndx((int)(Math.random()*xList.length));
 			myFightersList.get(i).setYIndx((int)(Math.random()*yList.length));
 		}
+		
 		
 		
 		if(!myFightersList.get(i).isNextToEnemy())
@@ -284,9 +286,13 @@ public class MapBattles {
 				myFightersList.get(i).saveFinalY();
 				myFightersList.get(i).setFinalSaved(true);
 			}
-			myFightersList.get(i).setX(myFightersList.get(i).getFinalX()+(xList[myFightersList.get(i).getXIndx()]*3));
+			double slopeX = (myFightersList.get(i).getFinalX()+(xList[myFightersList.get(i).getXIndx()]*2) -  myFightersList.get(i).getFinalX());
+			double slopeY = (myFightersList.get(i).getFinalY()+(xList[myFightersList.get(i).getYIndx()]*2) -  myFightersList.get(i).getFinalY());
+			myFightersList.get(i).setX(myFightersList.get(i).getFinalX()+slopeX*1.2);
+			myFightersList.get(i).setY(myFightersList.get(i).getFinalY()+slopeY*1.2);
+			// myFightersList.get(i).setX(myFightersList.get(i).getFinalX()+(xList[myFightersList.get(i).getXIndx()]*3));
 			
-			myFightersList.get(i).setY(myFightersList.get(i).getFinalY()+(yList[myFightersList.get(i).getYIndx()]*3));
+			// myFightersList.get(i).setY(myFightersList.get(i).getFinalY()+(yList[myFightersList.get(i).getYIndx()]*3));
 
 			if(myFightersList.get(i).getSpazDelayCounter() >= myFightersList.get(i).getSpazDelay()*(ePanel.getFPS()/60.0))
 				//if((int)(myFightersList.get(i).getX()) == xList[myFightersList.get(i).getXIndx()] + myFightersList.get(i).getFinalX() &&

@@ -48,7 +48,7 @@ public class MapFighters extends GlobalPosition{
 		myYIndx = -1;
 
 		mySpazDelayCounter = 0;
-		mySpazDelay = 3;
+		mySpazDelay = 3;//3
 		
 		// TODO Auto-generated constructor stub
 	}
