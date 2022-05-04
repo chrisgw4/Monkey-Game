@@ -229,6 +229,8 @@ public class MapPanel extends JPanel{
 			sButton.setBattleRunning(true);
 
 			screenWiping = true;
+
+			mapBattle.determineBattle();
 			
 			// Starts the battle when pressed
 			
@@ -258,7 +260,7 @@ public class MapPanel extends JPanel{
 		if(startDelay >= 120*(ePanel.getFPS()/60.0) && (fight_sign_frame >= 37 || fight_sign_frame == 0) && !mapBattle.isStarted()) /* make it 125 to keep the top part of the sign "the wire" broken*/
 		{
 			mapBattle.startBattle();
-			mapBattle.determineBattle();
+			
 			startMapBattleDelay = false;
 			startDelay = 0;
 		}

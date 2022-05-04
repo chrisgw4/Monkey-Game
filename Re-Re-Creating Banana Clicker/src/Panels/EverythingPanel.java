@@ -192,19 +192,44 @@ public class EverythingPanel extends JPanel implements ActionListener{
 		this.setBackground(Color.black);
 		
 		
-		
+		saveDelay = 3600;
+		saveDelayCounter = 0;
+		showSaveDelay = 120;
+		showSaveCounter = 0;
 	}
 	
-	private long timeStep;
-	private long prevTime = System.currentTimeMillis();
+	private int saveDelay;
+	private int saveDelayCounter;
+	private boolean showSave = false;
+	private int showSaveDelay;
+	private int showSaveCounter;
+
 	
 	public void paint(Graphics g) {
 		
 		
 		super.paint(g);
-		spc.updateFile();
-		spb.updateFile();
-		spp.updateFile();
+		saveDelayCounter++;
+		g.drawString(saveDelayCounter+"", 40, 10);
+		if(saveDelayCounter >= saveDelay*(getFPS()/60.0))
+		{
+			spc.updateFile();
+			spb.updateFile();
+			spp.updateFile();
+			saveDelayCounter = 0;
+			showSave = true;
+			showSaveCounter = 0;
+		}
+
+		if(showSave && showSaveCounter <= showSaveDelay*(getFPS()/60.0))
+		{
+			g.drawString("SAVED GAME", 100, 100);
+			showSaveCounter++;
+		}
+		if(showSaveCounter >= showSaveDelay*(getFPS()/60.0))
+		{
+			showSave = false;
+		}
 		
 		mp.update();
 		
@@ -219,7 +244,7 @@ public class EverythingPanel extends JPanel implements ActionListener{
 	
 	private long currTime;
 	private long lastTime = System.nanoTime();
-	private static double targetFPS = 120.0;
+	private static double targetFPS = 60.0;
 	private double ns = 1000000000 / targetFPS;
 	private long timers = System.currentTimeMillis();
 	private double delta = 0.0;

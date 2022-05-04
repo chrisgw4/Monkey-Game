@@ -19,10 +19,7 @@ public class MapEnemies extends MapFighters{
 		try {
 			setImage(ImageIO.read(new File("Re-Re-Creating Banana Clicker/Images/MapBattles/Enemies/" + myName + ".png")));
 			//img = ImageIO.read(new File("Images/Background/background.png"));
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
+		} catch (IOException e) {}
 		
 		try {
 			setImage(ImageIO.read(new File("Images/MapBattles/Enemies/" + myName + ".png")));

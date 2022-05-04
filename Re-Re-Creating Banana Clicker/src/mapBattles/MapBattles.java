@@ -443,7 +443,7 @@ public class MapBattles {
 		// 	mp.incrementSpazDelayCounter();
 		// }
 		
-		for(int g = 0; g < myFightersList.size(); g++)
+		for(int g = 0, d = 0; g < myFightersList.size(); g++, d+=2)
 		{
 			if(g < myFightersList.size() && g < myEnemiesList.size())
 			{
@@ -452,6 +452,11 @@ public class MapBattles {
 					myFightersList.get(g).setNextToEnemy(true);
 					myEnemiesList.get(g).setNextToEnemy(true); 
 				}
+				// if(myFightersList.get(g).getX() >= myEnemiesList.get(d).getX()-myEnemiesList.get(d).getWidth()/2)
+				// {
+				// 	myFightersList.get(g).setNextToEnemy(true);
+				// 	myEnemiesList.get(g).setNextToEnemy(true); 
+				// }
 			}
 		}
 		
