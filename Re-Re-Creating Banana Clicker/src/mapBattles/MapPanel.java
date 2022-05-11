@@ -18,6 +18,7 @@ import Panels.EverythingPanel;
 import Panels.PurchaseablePanel;
 import objects.Player;
 import objects.ScoreFont;
+import Power_Ups.Power_up;
 
 public class MapPanel extends JPanel{
 
@@ -72,6 +73,8 @@ public class MapPanel extends JPanel{
 	private boolean drawBackground = false;
 
 	private StartButton sButton;
+
+	
 
 	
 	
