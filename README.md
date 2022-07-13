@@ -1,5 +1,6 @@
 # Monkey-Game 
 Not-Completed and Will not be, it was more as a learning experience
+Also if you want to see the most updated version, best way is to use Christians Branch
 
 Simple clicker game
 - Click Banana to collect bananas
